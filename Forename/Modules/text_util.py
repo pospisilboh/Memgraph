@@ -120,6 +120,26 @@ def getNumbersFromStr(ctx: mgp.ProcCtx,
 
     return mgp.Record(numbers=new_w1)
 
+# Replace all numbers in string by defined string
+@mgp.read_proc
+def replaceNumbersInStr(ctx: mgp.ProcCtx,
+                   stringOne: str,
+                   replace: str) -> mgp.Record(string=str):
+        
+    w1 = stringOne
+
+    new_w1 = ''
+
+    specialCodes = [48,49,50,51,52,53,54,55,56,57]
+
+    for i in range(len(w1)):
+        if ord(w1[i]) in specialCodes:
+            new_w1 += replace 
+        else:
+            new_w1 += w1[i]
+
+    return mgp.Record(string=new_w1)
+
 
 # Generate string UUIDs which can be stored as properties on nodes or edges. 
 # The underlying implementation makes use of the uuid library.
