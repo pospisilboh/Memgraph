@@ -2,7 +2,7 @@
 
 Cypher has some basic functions to work with text but a lot of useful functions for string manipulation, comparison, and filtering are missing. Memgraph supports extending the query language with user-written procedures. These procedures are grouped into modules (Query Modules), which can then be loaded on startup or later on. 
 
-We created such a procedure to work with the text.
+We created the query module **text_util.py** because it will contain utility functions that are needed to work with text.
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/7980a2d858d23a039229eb467e874cbcd2f7cf79/Forename/Images/Custom%20Query%20Module%20-%20text_util.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
@@ -75,15 +75,18 @@ CALL text_util.substring('Katarina', -2) YIELD * // 'na'
  
 > In Memgraph there is a function **substring**. But there is an issue: https://github.com/memgraph/memgraph/issues/307 and it was the reason why we implemented our **text_util.substring**.
 
-## Memgraph
+## Custom Query Modules Using Docker
 
-To get started, we need to create and mount a volume to access the query_modules directory. This directory contains all of the built-in query modules and it’s where we can save new custom query modules, in our case **text_util.py** file. Create an empty directory modules on your host machine and execute the following command:
-
+To get started, we need to create and mount a volume to access the query_modules directory. This directory contains all of the built-in query modules and it’s where we can save new custom query modules, in our case our **text_util.py** file. 
+   
+Create an empty directory modules on your host machine and execute the following command:
 ```sh
 docker volume create --driver local --opt type=none --opt device=~modules --opt o=bind modules
 ```
 
-Now, you can start Memgraph and mount the created volume:
+Now, we can start Memgraph and mount the created volume:
 ```sh
 docker run -it --rm -v c:/modules:/mage/dist -p 7687:7687 -e MEMGRAPH="-query-execution-timeout-sec=0" memgraph
 ```
+   
+The file **text_util.py** should be in the **c:/modules** directory.
