@@ -24,52 +24,52 @@ We created the query module **text_util.py** because it will contain utility fun
 ## Text Similarity Functions
 
 Compare the strings with the Levenshtein distance
-```sql
+```sh
 CALL text_util.levenshteinSimilarity('Katarina', 'Katerina') YIELD * // 0.875
 ```
  
 Compare the strings with the jaroDistance
-```sql
+```sh
 CALL text_util.jaroDistance('Katarina', 'Katerina') YIELD * // 0.8214285714285715
 ```
  
 Compare the strings with the jaroWinklerDistance
-```sql
+```sh
 CALL text_util.jaroWinklerDistance('Katarina', 'Katerina') YIELD * // 0.875
 ```
 
 Compares the two strings with the compareStr
-```sql
+```sh
 CALL text_util.compareStr('Kateřina', '1234/*-Kateřina1234/*-') YIELD * // 1
 ```
 
 ## Data Cleaning Functions
 Generate normalized string with the normalizeStr
-```sql
+```sh
 CALL text_util.normalizeStr('1234/*-Kateřina1234/*-') YIELD * // 'kateina'
  
 CALL text_util.normalizeStr('1234/*-Kateřina1234/*-', 'cz') YIELD * // 'kateřina'
 ```
 
 Get all numbers from string with the getNumbersFromStr
-```sql
+```sh
 CALL text_util.getNumbersFromStr('1234/*-Ka5teři6na789/*-') YIELD * // '123456789'
 ```
 
 ## Other Functions
 Generate string UUIDs with the uuid_generate
-```sql
+```sh
 CALL text_util.uuid_generate () YIELD * // 'd6022f8d-62ff-47e6-8d3a-31fbfdd41f77'
 ```
 
 > In Memgraph there is a function **uuid_generator.get()**. The underlying implementation makes use of the uuid-dev library. When using the uuid module on Linux systems, the library can be installed by running sudo apt-get install uuid-dev.
 
-```sql
+```sh
 CALL uuid_generator.get() YIELD uuid
 ```
  
 Returns a substring of the original string  with the substring
-```sql
+```sh
 CALL text_util.substring('Katarina', -2) YIELD * // 'na'
 ```
  
@@ -90,3 +90,17 @@ docker run -it --rm -v c:/modules:/mage/dist -p 7687:7687 -e MEMGRAPH="-query-ex
 ```
    
 The file **text_util.py** should be in the **c:/modules** directory.
+   
+### Utility query module
+   
+Query procedures that allow the users to gain more insight into other query modules and their procedures are written under our utility mg query module. This module offers following procedures:
+
+Loads or reloads all modules
+```sh
+CALL mg.load_all()
+```
+
+Lists loaded procedures and their signatures.
+```sh
+CALL mg.procedures() YIELD *
+```
