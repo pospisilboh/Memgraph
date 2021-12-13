@@ -5,7 +5,7 @@ Cypher has some basic functions to work with text but a lot of useful functions 
 We created such a procedure to work with the text.
 
 <p align="center">
-   <img src="https://github.com/g-despot/images/blob/master/sng_demo_screenshot.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/7980a2d858d23a039229eb467e874cbcd2f7cf79/Forename/Images/Custom%20Query%20Module%20-%20text_util.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
 <p/>
 
 ## Overview Functions
