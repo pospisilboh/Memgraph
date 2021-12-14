@@ -7,31 +7,40 @@
 <p/>
 
 #### Eternal system
+From an external system, we extract forenames and their degree. Data are available as a *.csv file.
 
 #### Public web pages
+Following public web pages were used for web scraping another information using the implementation of a Web Scraping framework of Python called Beautiful Soup:
+- https://www.kurzy.cz/kalendar/svatky/abecedni-seznam-jmen/ (forename, gender, name day)
+- http://www.e-horoskopy.cz/vyznam-jmen.asp (forename, gender, name day and nick names)
+- https://www.kdejsme.cz/seznam/ (forename)
+- http://svatky.centrum.cz/jmenny-seznam/?month=1&order=na (forename, gender, name day)
 
-- ddd
-- dd
+### Jupyter Notebook
+Main puspose of Jupyter Notebook is to prepare data for another processing:
+- Load Forenames and their degree from external system (*.csv file)
+- Data scraping from public web pages. Get another information to forenames as are gender, name day, nick names
+- Forename anonymization can be important because in forenames there can be email addresses, phone numbers, personal identificator.
+- Create similarity relations. We compare forenames by implemented functions in custom Query Module (text_util.py) and create relationships with similarity score.
+- Create forename clusters. Through the created relationships forename clusters are created.
+- Create forename gender model. Prepare database model for forename gender recommendation.
+- Nodes and relations enrichement. By the Mamgraph query Module calculate nodes betweenness centrality, pageRank and bridge for relationships.
+- Export for Tableau.
 
-#### Jupyter Notebook
-
-- Load Forenames and their degree
-- Data scraping
-- Anonymization
-- Create similarity relations
-- Create forename clusters
-- Create forename gender model
-- Nodes and relations enrichement
-- Export for Tableau
-
-#### Mamgraph
-- Custom Query Module - text_util.py
+### Mamgraph
+- Custom Query Module
+   - text_util.py
+      -   text_util.normalizeStr(value, 'cz')
 - Query Module
+   - weakly_connected_components.get()
+   - betweenness_centrality.get(FALSE,FALSE)
+   - pagerank.get()
+   - bridges.get()
 
-#### Flask
+### Flask
 - Web services
 
-#### Tableau
+### Tableau
 - Forename repair rules
 - Forename dashboard
 - Forenames clusters
@@ -41,7 +50,7 @@
 - Forenames similarity
 - Forename nameDay
 
-#### Tableau Public
+### Tableau Public
 
 ## Data model
 
