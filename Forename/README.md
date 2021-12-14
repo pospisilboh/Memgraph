@@ -1,5 +1,48 @@
 #
 
+## Architecture
+
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/478e94fd4609ebec00b4890b086281079bac1559/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+<p/>
+
+#### Eternal system
+
+#### Public web pages
+
+- ddd
+- dd
+
+#### Jupyter Notebook
+
+- Load Forenames and their degree
+- Data scraping
+- Anonymization
+- Create similarity relations
+- Create forename clusters
+- Create forename gender model
+- Nodes and relations enrichement
+- Export for Tableau
+
+#### Mamgraph
+- Custom Query Module - text_util.py
+- Query Module
+
+#### Flask
+- Web services
+
+#### Tableau
+- Forename repair rules
+- Forename dashboard
+- Forenames clusters
+- Forenames cluster graf
+- Forename recommedation
+- Forename gender recommedation
+- Forenames similarity
+- Forename nameDay
+
+#### Tableau Public
+
 ## Data model
 
 <p align="center">
