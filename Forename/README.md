@@ -51,6 +51,7 @@ Main puspose of Jupyter Notebook is to prepare data for another processing:
 - Forename nameDay
 
 ### Tableau Public
+Publish Tableau dashboards to Tableau Public is a way how to share our dashboards with others publicly
 
 ## Data model
 
