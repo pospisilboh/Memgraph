@@ -22,9 +22,9 @@
 | Forename | source | Forename was found in web pages used for scraping. Source web pages for scraping are: www.kurzy.cz, www.e-horoskopy.cz, www.kdejsme.cz, www.svatky.centrum.cz |
 | Forename | normalizedValue | CALL text_util.normalizeStr(value, 'cz') |
 | Forename | valueNumberCount | CALL text_util.getNumbersFromStr(value) |
-| Forename | componentId | Create clusters by WCC algorithm <p> weakly_connected_components.get() |
-| Forename | betweenness | <p> CALL betweenness_centrality.get(FALSE,FALSE) |
-| Forename | pageRank | <p> CALL pagerank.get() |
+| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. <p> Create clusters by WCC algorithm <p> CALL weakly_connected_components.get() |
+| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. <p> CALL betweenness_centrality.get(FALSE,FALSE) |
+| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. <p> CALL pagerank.get() |
 | Forename | anonymized | false/true |
 | Forename | anonymizationRule |  |
 | Rule | property |  |
@@ -40,13 +40,13 @@
 | Type      | Property | Description |
 | :---        |    :----   | :---- |
 | SIMILAR_FORENAME_COMPARED_STRING | score | 0 ... not similar, 1 ... similar |
-| SIMILAR_FORENAME_COMPARED_STRING | bridge | <p> CALL bridges.get() |
+| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
 | SIMILAR_FORENAME_LEVENSHTEIN | score | CALL text_util.levenshteinSimilarity(text1, text2) |
-| SIMILAR_FORENAME_LEVENSHTEIN | bridge | <p> CALL bridges.get() |
+| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
 | SIMILAR_FORENAME_JAROWINKLER | score | CALL text_util.jaroWinklerDistance(text1, text2) |
-| SIMILAR_FORENAME_JAROWINKLER | bridge | <p> CALL bridges.get() |
+| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
 | SIMILAR_FORENAME_JARO | score | CALL text_util.jaroDistance(text1, text2) |
-| SIMILAR_FORENAME_JARO | bridge | <p> CALL bridges.get() |
+| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
 | DEFINED_BY | type |  |
 | HAS_LAST_TWO_CHAR | degree |  |
 | HAS_GENDER |  |  |
