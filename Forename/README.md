@@ -1,10 +1,19 @@
-#
+# Forename
+
+By very simple data (forename and their degree) we created a framework that in near future will help us to solve cases as are:
+- Customer 360
+- Entity resolutions / Record linkage
+- ...
+
+By the framework we are able now to:
+- compare strings and calculate their similarity by different algorithms
+- ...
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-## Architecture
+## Solution architecture
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/478e94fd4609ebec00b4890b086281079bac1559/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
@@ -105,11 +114,26 @@ Data sources for Tableau dashboards are mentioned imported files (export_forenam
 
 #### Forename dashboard
 
+The main dashboard gives a base overview of what data are available.
+
+> The count of valid forenames is low (only 29,51 %) but their degree is high (96,08 %). In another word, there are only 3,92 % of wrong forenames.
+
+> There is a lot of forenames with no definition of gender (97,62 %), but their degree is only 10.68 % from all.
+
+> Most popular male name is Petr, Most popular female name is Jana.
+
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20dashboard.png?raw=true" alt="Forename dashboard" width="900"/>
 <p/>
 
 #### Forenames clusters
+
+This dashboard gives the possibility to analyze forenames clusters:
+- count and list of forenames in each cluster
+- types of relations in the cluster
+- existed relations between forenames and their similarity score
+
+> The biggest cluster consists from 25 forenames
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20clusters.png?raw=true" alt="Forenames clusters" width="900"/>
@@ -117,10 +141,16 @@ Data sources for Tableau dashboards are mentioned imported files (export_forenam
 
 #### Forenames cluster graf
 
+This dashboard gives the possibility to analyze forenames clusters visually:
+- define node property (betweenness, degre, pageRank, valid)
+- define edge property (bridge, score)
+- scale nodes depending on defined node property
+- scale edges depending on on defined edge property
+- hover over nodes or edges to get a popup with more information
+
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20cluster%20graf.png?raw=true" alt="Forenames cluster graf" width="900"/>
 <p/>
-
 
 #### Forename repair rules
 
