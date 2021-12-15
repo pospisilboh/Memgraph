@@ -71,6 +71,17 @@ Main puspose of Jupyter Notebook is to prepare data for another processing:
    ```
 
 ### Mamgraph
+
+We used the power and simplicity of the Cypher query language and Memgraph’s extensions for algorithms such as:
+- Query Module
+   - weakly_connected_components.so
+      - weakly_connected_components.get()
+   - betweenness_centrality.so
+      - betweenness_centrality.get()
+   - pagerank.so
+      - pagerank.get()
+   - bridges.so
+      - bridges.get()
 - Custom Query Module
    - text_util.py
       -   text_util.levenshteinSimilarity(text1, text2)
@@ -81,20 +92,11 @@ Main puspose of Jupyter Notebook is to prepare data for another processing:
       -   text_util.getNumbersFromStr(text)
       -   text_util.uuid_generate()
       -   text_util.substring(text, start, end, step)
-- Query Module
-   - weakly_connected_components.so
-      - weakly_connected_components.get()
-   - betweenness_centrality.so
-      - betweenness_centrality.get()
-   - pagerank.so
-      - pagerank.get()
-   - bridges.so
-      - bridges.get()
 
 ### Flask
-Flask is a micro web framework written in Python and we used it for implementing web services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library **D3.js** is used.
+Flask is a micro web framework written in Python and we used it for implementing web services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library **D3.js** was used.
 
-Implemented web services are:
+Implemented services are:
 - http://127.0.0.1:5000/get-cluster-recommendation?componentId=
 - http://127.0.0.1:5000/get-forename-recommendation?forename=
 - http://127.0.0.1:5000/forename-recommendation-form
@@ -106,7 +108,13 @@ Implemented web services are:
 - http://127.0.0.1:5000/get-forename-rule?id=
 - http://127.0.0.1:5000/get-forenames-rules
 
-> By the web service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rules.
+> Parameter componentId is unique identificator of cluster
+
+> Parameter id is unique identificator of node
+
+> Parameter rid is unique identificator of edge
+
+> By the web service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
 ### Tableau
 
@@ -116,15 +124,15 @@ Data sources for Tableau dashboards are mentioned imported files (export_forenam
 
 The main dashboard gives a base overview of what data are available.
 
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20dashboard.png?raw=true" alt="Forename dashboard" width="900"/>
+<p/>
+
 > The count of valid forenames is low (only 29,51 %) but their degree is high (96,08 %). In another word, there are only 3,92 % of wrong forenames.
 
 > There is a lot of forenames with no definition of gender (97,62 %), but their degree is only 10.68 % from all.
 
 > Most popular male name is Petr, Most popular female name is Jana.
-
-<p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20dashboard.png?raw=true" alt="Forename dashboard" width="900"/>
-<p/>
 
 #### Forenames clusters
 
@@ -133,11 +141,11 @@ This dashboard gives the possibility to analyze forenames clusters:
 - types of relations in the cluster
 - existed relations between forenames and their similarity score
 
-> The biggest cluster consists from 25 forenames
-
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20clusters.png?raw=true" alt="Forenames clusters" width="900"/>
 <p/>
+
+> The biggest cluster consists from 25 forenames.
 
 #### Forenames cluster graf
 
@@ -152,28 +160,54 @@ This dashboard gives the possibility to analyze forenames clusters visually:
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20cluster%20graf.png?raw=true" alt="Forenames cluster graf" width="900"/>
 <p/>
 
-#### Forename repair rules
-
-<p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20repair%20rules.png?raw=true" alt="Forename repair rules" width="900"/>
-<p/>
-
 #### Forename recommedation
+
+This dashboard gives the possibility:
+- for a defined forename by the selected method (compareStr, levenshteinSimilarity, jaroDistance, jaroWinklerDistance) get recommended forenames.
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Foremame%20recommender.png?raw=true" alt="Forename recommedation" width="900"/>
 <p/>
 
+> The defined name may not exist in the database.
+
+> The list of recommended forenames is ordered by valid, score DESC, degree DESC.
+
 #### Forename gender recommedation
+
+This dashboard gives the possibility:
+- for a selected forename generate forename gender recommendation graph
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20gender%20recommender.png?raw=true" alt="Forename gender recommedation" width="900"/>
 <p/>
 
+> In the graph, there are nodes with the label **LastTwoChar** that represent values of the last two characters from forenames. Some of them are:
+> - part of only male forenames (blue),
+> - part of only female forenames (yellow),
+> - part of male and female forenames too (grey).
+
+> For the selected forename **Dennis** by the generated recommendation graph the recommended gender of forename **Dennis** is male.
+
 #### Forenames similarity
+
+This dashboard gives the possibility:
+- for a selected forename create in a database repair rule definition (node with label Rule) by the available Tableau action **Set forename rule**
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a93003f527596fb0b20dd393bca21ff3261b277c/Forename/Images/Forenames%20similarity.png?raw=true" alt="Forenames similarity" width="900"/>
+<p/>
+
+> Functionality to export all created repair rules in a form of Sql or Cypher scripts is available via the dashboard **Forename repair rules**.
+
+#### Forename repair rules
+
+This dashboard gives the possibility to:
+- list all defined repair rules
+- download Sql or Cypher script with repair rules
+
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20repair%20rules.png?raw=true" alt="Forename repair rules" width="900"/>
 <p/>
 
 #### Forename nameDay
