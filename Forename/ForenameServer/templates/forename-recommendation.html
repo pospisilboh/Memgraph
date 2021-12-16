@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="/forename-recommendation-form">
+  {{ form.hidden_tag() }}
+
+  <b>{{ form.forename.label }}</b> </p>{{ form.forename(size=20) }}
+  </p>
+  <b>{{ form.method.label }}</b> </p>{{ form.method(size=20) }}
+  </p>
+  <b>{{ form.similarityMin.label }}</b> </p>{{ form.similarityMin(size=20) }}
+  </p>
+  <input type="submit" value="Get recommendation">
+</form>
+</br>
+</br>
+
+<h2>Forename recommendation results</h2>
+<table id="data" class="table table-striped">
+  <thead>
+    <tr>
+      <th>forename</th>
+      <th>recommendation</th>
+      <th>gender</th>
+      <th>valid</th>
+      <th>score</th>
+      <th>degree</th>
+      <th>nickNames</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for recommendation in recommendations %}
+    <tr>
+      <td>{{ recommendation.forename }}</td>
+      <td>{{ recommendation.recommendation }}</td>
+      <td>{{ recommendation.gender }}</td>
+      <td>{{ recommendation.valid }}</td>
+      <td>{{ recommendation.score }}</td>
+      <td>{{ recommendation.degree }}</td>
+      <td>{{ recommendation.nickNames }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

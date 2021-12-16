@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>source</th>
+        <th>target</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for detail in rule %}
+        <tr>
+          <td>{{ detail.source }}</td>
+          <td>{{ detail.target }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>update cypher query</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for detail in rule %}
+        <tr>
+          <td>
+            MATCH (f:Forename {value: '{{ detail.target }}'}) </p>
+            SET f.value = '{{ detail.source }}' </p>
+            RETURN COUNT(*)
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>update sql query</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for detail in rule %}
+        <tr>
+          <td>
+            UPDATE Forename</p>
+            SET value = '{{ detail.source }}' </p>
+            WHERE value = '{{ detail.target }}'
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

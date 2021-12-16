@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <a href="{{ url_for('export_download', filename=filename_sql_valid) }}">Download sql script</a> <p></p>
+  <a href="{{ url_for('export_download', filename=filename_cypher_valid) }}">Download cypher script</a>
+  </p>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>forename</th>
+        <th>update cypher query</th>
+        <th>update sql query</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for forename in forenames %}
+          <tr>
+            <td>{{ forename.forename }}</td>
+            <td>
+              MATCH (f:Forename {value: '{{ forename.forename }}'}) </p>
+              SET f.value = true </p>
+              RETURN COUNT(*)
+            </td>
+              <td>
+                UPDATE Forename</p>
+                SET value = true </p>
+                WHERE value = '{{ forename.forename }}'
+              </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}

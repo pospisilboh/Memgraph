@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>forename</th>
+        <th>componentId</th>
+        <th>degree</th>
+        <th>betweenness</th>
+        <th>pageRank</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for property in forename %}
+        <tr>
+          <td>{{ property.value }}</td>
+          <td>{{ property.componentId }}</td>
+          <td>{{ property.degree }}</td>
+          <td>{{ property.betweenness }}</td>
+          <td>{{ property.pageRank }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

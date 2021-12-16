@@ -1,0 +1,17 @@
+version: '3'
+services:
+  memgraph:
+    image: "memgraph"
+    ports:
+      - "7687:7687"
+  forename:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    environment:
+      MG_HOST: memgraph
+      MG_PORT: 7687
+    depends_on:
+      - memgraph
