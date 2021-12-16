@@ -1,5 +1,9 @@
 # Forename
 
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
+<p/>
+
 ## Table of Contents
 
 <div class="alert alert-block alert-info" style="margin-top: 20px">
@@ -12,31 +16,41 @@
    
 3. <a href="#data-model">Data model</a>
 
+4. <a href="#sources">Sources</a>
+
+
 </font>
 </div>
 
 <h2 id="description">Description of the solution</h2>
 
-By very simple data (forename and their degree) we created a framework that in near future will help us to solve cases as are:
-- Customer 360
-- Entity resolutions / Record linkage
+By very simple data, `forenames` and their `degree`, we built dataset and created a framework that in near future will help us improve data quality and solve cases as are:
+- Customer 360,
+- Single Customer View,
+- Entity resolutions / Record linkage,
+- Master Data Management,
 - ...
-
-By the framework we are able now to:
-- compare strings and calculate their similarity by different algorithms
-- ...
-
-<p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
-<p/>
 
 <h2 id="architecture">Solution architecture</h2>
+
+The solution is a mix of the following technologies and tools:
+- Python
+- Jupyter Notebook
+- Flask
+- Mamgraph
+- Cypher
+- SQL
+- D3.js
+- Tableau
+- Tableau public
+- OpenAPI
+- Beautiful Soup
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/491da55e8a3a345c7391b0de435b1b712ea4583c/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
-#### Eternal system
+### Eternal system
 From an external system, we extract `forenames` and their `degree`. Data for import are available as a *.csv file.
 ```csv
 degree,forename
@@ -46,7 +60,7 @@ degree,forename
 ...
 ```
 
-#### Public web pages
+### Public web pages
 Following public web pages were used for web scraping another information (gender, name day, nick names) using the implementation of a Web Scraping framework of Python called [**Beautiful Soup**](https://www.crummy.com/software/BeautifulSoup/bs4/doc/):
 - [https://www.kurzy.cz](https://www.kurzy.cz/kalendar/svatky/abecedni-seznam-jmen/) ... `forename`, `gender`, `name day`
 - [http://www.e-horoskopy.cz](http://www.e-horoskopy.cz/vyznam-jmen.asp) ... `forename`, `gender`, `name day` and `nick names`
@@ -56,11 +70,11 @@ Following public web pages were used for web scraping another information (gende
 > If the forename is found in any web page, this forename is valid for us, we set a node property `valid = true`.
 
 ### Jupyter Notebook
-Main puspose of [**Jupyter Notebook**](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb) is to prepare data for another processing:
-- Load forenames and their degree from external system (*.csv file)
-- Data scraping from public web pages. Get another information to forenames as are `gender`, `name day`, `nick names`
+The Python script in Jupyter Notebook using a graph database Memgraph. The main purpose of [**Jupyter Notebook**](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb) is to prepare data for another processing:
+- Load `forenames` and their `degree` from external system (*.csv file)
+- Data scraping by [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) from public web pages. Get another information to forenames as are `gender`, `name day`, `nick names`
 - Forename anonymization can be important because in forenames there can be email addresses, phone numbers, personal identificator.
-- Create similarity relations. We compare forenames by implemented functions in custom Query Module (`text_util.py`) and create relationships with an appropriate similarity score:
+- Create similarity relations. We compare forenames by implemented functions in custom Query Module (`text_util.py`) and create relationships with an appropriate similarity `score`:
    - SIMILAR_FORENAME_COMPARED_STRING
    - SIMILAR_FORENAME_LEVENSHTEIN
    - SIMILAR_FORENAME_JAROWINKLER
@@ -149,7 +163,7 @@ The main dashboard gives a base overview of what data are available.
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20dashboard.png?raw=true" alt="Forename dashboard" width="900"/>
 <p/>
 
-> The count of valid forenames is low (only 29,51 %) but their degree is high (96,08 %). In another word, there are only 3,92 % of wrong forenames.
+> The count of valid forenames is low (only 29,51 %) but their degree is high (96,08 %). In another word, there are only `3,92 %` of wrong forenames.
 
 > There is a lot of forenames with no definition of gender (97,62 %), but their degree is only 10.68 % from all.
 
@@ -166,7 +180,15 @@ This dashboard gives the possibility to analyze forenames clusters:
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20clusters.png?raw=true" alt="Forenames clusters" width="900"/>
 <p/>
 
-> The biggest cluster consists from 25 forenames.
+> The count of forenames in the cluster is `20`.
+> 
+> The count of forename genders in the cluster is `2`.
+> 
+> The sum of forenames degree is `20 542`.
+> 
+> The biggest cluster consists from `25` forenames.
+> 
+> The forename with highest degree in cluster is male forename `Michal`, the second one is female forename `Michaela`.
 
 #### Forenames cluster graf
 
@@ -289,7 +311,7 @@ Publish Tableau dashboards to Tableau Public is a way how to share our dashboard
 | HAS_LAST_TWO_CHAR | degree | Nodes with label Forename or Gender can have relation HAS_LAST_TWO_CHAR to node with label LastTwoChar. |
 | HAS_GENDER |  | Nodes with label Forename can have relation HAS_GENDER to node with label Gender. |
 
-## Sources
+<h2 id="sources">Sources</h2>
 
 https://docs.google.com/forms/d/e/1FAIpQLSdS1l27pfZ7GYExPuOPbiyhjgCZ7HwuN2U2Aii7Z5fSakWgDw/viewform
 
