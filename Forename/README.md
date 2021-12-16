@@ -6,11 +6,11 @@
 
 <font size = 3>
 
-1. <a href="#item1">Description of the solution</a>
+1. <a href="item1">Description of the solution</a>
 
-2. <a href="#item2">Solution architecture</a>
+2. <a href="item2">Solution architecture</a>
    
-3. <a href="#item2">Data model</a>
+3. <a href="item3">Data model</a>
 
 </font>
 </div>
@@ -33,7 +33,7 @@ By the framework we are able now to:
 ## Solution architecture
 
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/478e94fd4609ebec00b4890b086281079bac1559/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/491da55e8a3a345c7391b0de435b1b712ea4583c/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 #### Eternal system
@@ -66,8 +66,12 @@ Main puspose of [**Jupyter Notebook**](https://github.com/pospisilboh/Memgraph/b
    - SIMILAR_FORENAME_JAROWINKLER
    - SIMILAR_FORENAME_JARO
 - Create forename clusters. Clusters of forenames are created by the function `weakly_connected_components.get()`. For each node new property `componentId` is created. 
-- Create forename gender model. Prepare data model to support forename gender recommendation.
-- Nodes and relations enrichement. By the Mamgraph query modules `betweenness centrality`, `pageRank` for nodes and `bridge` for relationships are calculate.
+- Create forename gender model. Prepare data model to support forename gender recommendation:
+   -  nodes with label `Gender` and `LastTwoChar`
+   -  edges with type `HAS_GENDER` and `HAS_LAST_TWO_CHAR`
+- Nodes and relations enrichement. By the Mamgraph query modules calculate:
+   - `betweenness centrality`, `pageRank` for nodes, 
+   - `bridge` for relationships.
 - Export for Tableau. Following two files are created:
    - export_forename_nodes.csv
    ```csv
@@ -167,8 +171,8 @@ This dashboard gives the possibility to analyze forenames clusters:
 #### Forenames cluster graf
 
 This dashboard gives the possibility to analyze forenames clusters visually:
-- define node property (betweenness, degre, pageRank, valid)
-- define edge property (bridge, score)
+- define node property (`betweenness`, `degre`, `pageRank`, `valid`)
+- define edge property (`bridge`, `score`)
 - scale nodes depending on defined node property
 - scale edges depending on on defined edge property
 - hover over nodes or edges to get a popup with more information
@@ -176,6 +180,8 @@ This dashboard gives the possibility to analyze forenames clusters visually:
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20cluster%20graf.png?raw=true" alt="Forenames cluster graf" width="900"/>
 <p/>
+
+> In the graph male forenames are blue, female forenames are yellow and forenames without defined gender are grey.
 
 #### Forename recommedation
 
@@ -232,7 +238,7 @@ Publish Tableau dashboards to Tableau Public is a way how to share our dashboard
 
 > Some functionalities of dashboards are limited, there aren't available web services provided by the Flask application server.
 
-## Data model
+## Data model {item3}
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/58cbaa5780df48841b542f0e10e77dd080c6eec5/Forename/Images/Data%20model.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
