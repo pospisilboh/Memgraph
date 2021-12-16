@@ -37,7 +37,7 @@ By the framework we are able now to:
 <p/>
 
 #### Eternal system
-From an external system, we extract forenames and their degree. Data are available as a *.csv file.
+From an external system, we extract `forenames` and their `degree`. Data for import are available as a *.csv file.
 ```csv
 degree,forename
 759,Drahomíra
@@ -47,27 +47,27 @@ degree,forename
 ```
 
 #### Public web pages
-Following public web pages were used for web scraping another information (gender, name day, nick names) using the implementation of a Web Scraping framework of Python called Beautiful Soup:
-- https://www.kurzy.cz/kalendar/svatky/abecedni-seznam-jmen/ (forename, gender, name day)
-- http://www.e-horoskopy.cz/vyznam-jmen.asp (forename, gender, name day and nick names)
-- https://www.kdejsme.cz/seznam/ (forename)
-- http://svatky.centrum.cz/jmenny-seznam/?month=1&order=na (forename, gender, name day)
+Following public web pages were used for web scraping another information (gender, name day, nick names) using the implementation of a Web Scraping framework of Python called [**Beautiful Soup**](https://www.crummy.com/software/BeautifulSoup/bs4/doc/):
+- [https://www.kurzy.cz](https://www.kurzy.cz/kalendar/svatky/abecedni-seznam-jmen/) ... `forename`, `gender`, `name day`
+- [http://www.e-horoskopy.cz](http://www.e-horoskopy.cz/vyznam-jmen.asp) ... `forename`, `gender`, `name day` and `nick names`
+- [https://www.kdejsme.cz](https://www.kdejsme.cz/seznam/) ... `forename`
+- [http://svatky.centrum.cz](http://svatky.centrum.cz/jmenny-seznam/?month=1&order=na) ... `forename`, `gender`, `name day`
 
-> If the forename is found in any web page, this forename is valid for us, we set a node property **valid = true**.
+> If the forename is found in any web page, this forename is valid for us, we set a node property `valid = true`.
 
 ### Jupyter Notebook
-Main puspose of Jupyter Notebook is to prepare data for another processing:
-- Load Forenames and their degree from external system (*.csv file)
-- Data scraping from public web pages. Get another information to forenames as are gender, name day, nick names
+Main puspose of [**Jupyter Notebook**](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb) is to prepare data for another processing:
+- Load forenames and their degree from external system (*.csv file)
+- Data scraping from public web pages. Get another information to forenames as are `gender`, `name day`, `nick names`
 - Forename anonymization can be important because in forenames there can be email addresses, phone numbers, personal identificator.
-- Create similarity relations. We compare forenames by implemented functions in custom Query Module (text_util.py) and create relationships with an appropriate similarity score:
+- Create similarity relations. We compare forenames by implemented functions in custom Query Module (`text_util.py`) and create relationships with an appropriate similarity score:
    - SIMILAR_FORENAME_COMPARED_STRING
    - SIMILAR_FORENAME_LEVENSHTEIN
    - SIMILAR_FORENAME_JAROWINKLER
    - SIMILAR_FORENAME_JARO
-- Create forename clusters. Clusters of forenames are created by the function weakly_connected_components.get(). For each node new property **componentId** is created. 
+- Create forename clusters. Clusters of forenames are created by the function `weakly_connected_components.get()`. For each node new property `componentId` is created. 
 - Create forename gender model. Prepare data model to support forename gender recommendation.
-- Nodes and relations enrichement. By the Mamgraph query modules **betweenness centrality, pageRank** for nodes and **bridge** for relationships are calculate.
+- Nodes and relations enrichement. By the Mamgraph query modules `betweenness centrality`, `pageRank` for nodes and `bridge` for relationships are calculate.
 - Export for Tableau. Following two files are created:
    - export_forename_nodes.csv
    ```csv
@@ -92,15 +92,15 @@ Main puspose of Jupyter Notebook is to prepare data for another processing:
 We used the power and simplicity of the Cypher query language and Memgraph’s extensions for algorithms such as:
 - Query Module
    - weakly_connected_components.so
-      - weakly_connected_components.get()
+      - [**weakly_connected_components.get()**](https://memgraph.com/docs/mage/query-modules/cpp/weakly-connected-components)
    - betweenness_centrality.so
-      - betweenness_centrality.get()
+      - [**betweenness_centrality.get()**](https://memgraph.com/docs/mage/query-modules/cpp/betweenness-centrality)
    - pagerank.so
-      - pagerank.get()
+      - [**pagerank.get()**](https://memgraph.com/docs/mage/query-modules/cpp/pagerank)
    - bridges.so
-      - bridges.get()
+      - [**bridges.get()**](https://memgraph.com/docs/mage/query-modules/cpp/bridges)
 - Custom Query Module
-   - [**text_util.py**](https://github.com/pospisilboh/Memgraph/edit/master/Forename/Modules/README.md)
+   - [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules)
       -   text_util.levenshteinSimilarity(text1, text2)
       -   text_util.jaroDistance(text1, text2)
       -   text_util.jaroWinklerDistance(text1, text2)
@@ -111,7 +111,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
       -   text_util.substring(text, start, end, step)
 
 ### Flask
-Flask is a micro web framework written in Python and we used it for implementing web services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library **D3.js** was used.
+[**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing web services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
 Implemented services are:
 - http://127.0.0.1:5000/get-cluster-recommendation?componentId=
@@ -125,17 +125,17 @@ Implemented services are:
 - http://127.0.0.1:5000/get-forename-rule?id=
 - http://127.0.0.1:5000/get-forenames-rules
 
-> Parameter componentId is unique identificator of cluster
+> Parameter `componentId` is unique identificator of cluster.
 
-> Parameter id is unique identificator of node
+> Parameter `id` is unique identificator of node.
 
-> Parameter rid is unique identificator of edge
+> Parameter `rid` is unique identificator of edge.
 
 > By the web service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
 ### Tableau
 
-Data sources for Tableau dashboards are mentioned imported files (export_forename_nodes.csv and export_forename_relations.csv) and web services provided by Flask. 
+Data sources for Tableau dashboards are mentioned files `export_forename_nodes.csv` and `export_forename_relations.csv` and services provided by application server Flask. 
 
 #### Forename dashboard
 
@@ -251,7 +251,7 @@ Publish Tableau dashboards to Tableau Public is a way how to share our dashboard
 | Forename | nameDayMonth | Value of month (MM) extracted from nameDay. |
 | Forename | nickNames | From web pages used for scraping. List of nicknames for the forename. |
 | Forename | origin | From web pages used for scraping. <p> Itálie, Severské země, anglický, anglosaský, aramejský, francouzský, germánský, hebrejský, hebrejský, holandský,	italský, jihoslovanský,	keltský, latinský,	maďarský, nejasný, německý, orientální, perský, polský, ruský |
-| Forename | source | Forename was found in web pages used for scraping. Source web pages for scraping are: www.kurzy.cz, www.e-horoskopy.cz, www.kdejsme.cz, www.svatky.centrum.cz |
+| Forename | source | Forename was found in web pages used for scraping. Source web pages for scraping are: www.kurzy.cz, www.e-horoskopy.cz, www.kdejsme.cz,  www.svatky.centrum.cz |
 | Forename | normalizedValue | CALL text_util.normalizeStr(value, 'cz') |
 | Forename | valueNumberCount | CALL text_util.getNumbersFromStr(value) |
 | Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. <p> Create clusters by WCC algorithm <p> CALL weakly_connected_components.get() |
