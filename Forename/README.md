@@ -238,7 +238,7 @@ Publish Tableau dashboards to Tableau Public is a way how to share our dashboard
 
 > Some functionalities of dashboards are limited, there aren't available web services provided by the Flask application server.
 
-## Data model {#data-model}
+<h2 id="data-model">Data model</h2>
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/58cbaa5780df48841b542f0e10e77dd080c6eec5/Forename/Images/Data%20model.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
