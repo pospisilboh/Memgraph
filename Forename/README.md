@@ -6,16 +6,16 @@
 
 <font size = 3>
 
-1. <a href="item1">Description of the solution</a>
+1. <a href="#description">Description of the solution</a>
 
-2. <a href="item2">Solution architecture</a>
+2. <a href="#architecture">Solution architecture</a>
    
 3. <a href="#data-model">Data model</a>
 
 </font>
 </div>
 
-## Description of the solution
+<h2 id="description">Description of the solution</h2>
 
 By very simple data (forename and their degree) we created a framework that in near future will help us to solve cases as are:
 - Customer 360
@@ -30,7 +30,7 @@ By the framework we are able now to:
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-## Solution architecture
+<h2 id="architecture">Solution architecture</h2>
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/491da55e8a3a345c7391b0de435b1b712ea4583c/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
