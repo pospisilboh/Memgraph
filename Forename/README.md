@@ -1,5 +1,22 @@
 # Forename
 
+## Table of Contents
+
+<div class="alert alert-block alert-info" style="margin-top: 20px">
+
+<font size = 3>
+
+1. <a href="#item1">Description of the solution</a>
+
+2. <a href="#item2">Solution architecture</a>
+   
+3. <a href="#item2">Data model</a>
+
+</font>
+</div>
+
+## Description of the solution
+
 By very simple data (forename and their degree) we created a framework that in near future will help us to solve cases as are:
 - Customer 360
 - Entity resolutions / Record linkage
@@ -83,7 +100,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
    - bridges.so
       - bridges.get()
 - Custom Query Module
-   - text_util.py
+   - [**text_util.py**](https://github.com/pospisilboh/Memgraph/edit/master/Forename/Modules/README.md)
       -   text_util.levenshteinSimilarity(text1, text2)
       -   text_util.jaroDistance(text1, text2)
       -   text_util.jaroWinklerDistance(text1, text2)
@@ -210,14 +227,10 @@ This dashboard gives the possibility to:
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20repair%20rules.png?raw=true" alt="Forename repair rules" width="900"/>
 <p/>
 
-#### Forename nameDay
-
-<p align="center">
-   <img src="?raw=true" alt="Forename nameDay" width="900"/>
-<p/>
-
 ### Tableau Public
 Publish Tableau dashboards to Tableau Public is a way how to share our dashboards with others publicly
+
+> Some functionalities of dashboards are limited, there aren't available web services provided by the Flask application server.
 
 ## Data model
 
