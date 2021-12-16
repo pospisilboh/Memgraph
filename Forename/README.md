@@ -4,6 +4,8 @@
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
+[Dashboards are available in Tableau public](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
+
 ## Table of Contents
 
 <div class="alert alert-block alert-info" style="margin-top: 20px">
@@ -256,7 +258,7 @@ This dashboard gives the possibility to:
 <p/>
 
 ### Tableau Public
-Publish Tableau dashboards to Tableau Public is a way how to share our dashboards with others publicly
+Publish [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to Tableau Public is a way how to share our dashboards with others publicly
 
 > Some functionalities of dashboards are limited, there aren't available web services provided by the Flask application server.
 
