@@ -153,8 +153,8 @@ def get_forenames_valid():
 def export_download(filename):
     return send_from_directory('download', filename)
 
-# http://127.0.0.1:5000/get-graph-cluster/<nodeProperty>?componentId=
-# http://127.0.0.1:5000/get-graph-cluster/degree?componentId=18
+# http://127.0.0.1:5000/get-graph-cluster/<nodeProperty>/<relationProperty>?componentId=
+# http://127.0.0.1:5000/get-graph-cluster/degree/bridge?componentId=18
 @app.route("/get-graph-cluster/<nodeProperty>/<relationProperty>", methods=["POST", "GET"])
 def get_graph_cluster(nodeProperty=None, relationProperty=None):
 
