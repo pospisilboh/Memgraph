@@ -219,13 +219,13 @@ This dashboard gives the possibility to analyze forenames clusters:
 > 
 > The forename with highest degree in cluster is male forename `Michal`, the second one is female forename `Michaela`.
 
-#### Forenames cluster graf
+#### Forenames cluster grapf
 
 This dashboard gives the possibility to analyze forenames clusters visually:
 - define node property (`betweenness`, `degre`, `pageRank`, `valid`)
 - define edge property (`bridge`, `score`)
 - scale nodes depending on defined node property
-- scale edges depending on on defined edge property
+- scale edges depending on defined edge property
 - hover over nodes or edges to get a popup with more information
 
 <p align="center">
@@ -234,7 +234,7 @@ This dashboard gives the possibility to analyze forenames clusters visually:
 
 > In the graph male forenames are blue, female forenames are yellow and forenames without defined gender are grey.
 
-#### Forename recommedation
+#### Forename recommendation
 
 This dashboard gives the possibility:
 - for a defined forename by the selected method (compareStr, levenshteinSimilarity, jaroDistance, jaroWinklerDistance) get recommended forenames.
@@ -247,7 +247,7 @@ This dashboard gives the possibility:
 
 > The list of recommended forenames is ordered by valid, score DESC, degree DESC.
 
-#### Forename gender recommedation
+#### Forename gender recommendation
 
 This dashboard gives the possibility:
 - for a selected forename generate forename gender recommendation graph
