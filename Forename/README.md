@@ -39,17 +39,19 @@ The solution is a mix of the following technologies and tools:
 - Python
 - Jupyter Notebook
 - Flask
-- Mamgraph
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
+- Memgraph
+- Memgraph Lab
+- [Memgraph Cloud](https://cloud.memgraph.com/login)
 - Cypher
 - SQL
 - D3.js
 - Tableau
 - Tableau public
-- OpenAPI
 - Beautiful Soup
 
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/491da55e8a3a345c7391b0de435b1b712ea4583c/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/59668115494131b06bb94c75e619985ceda33314/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### Eternal system
@@ -107,7 +109,7 @@ The Python script in Jupyter Notebook using a graph database Memgraph. The main 
    ...
    ```
 
-### Mamgraph
+### Memgraph
 
 We used the power and simplicity of the Cypher query language and Memgraph’s extensions for algorithms such as:
 - Query Module
@@ -130,8 +132,11 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
       -   text_util.uuid_generate()
       -   text_util.substring(text, start, end, step)
 
+### Memgraph Cloud
+
+
 ### Flask
-[**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing web services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
+[**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
 Implemented services are:
 - http://127.0.0.1:5000/get-cluster-recommendation?componentId=
@@ -151,7 +156,36 @@ Implemented services are:
 
 > Parameter `rid` is unique identificator of edge.
 
-> By the web service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
+> By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
+
+### IBM Cloud Foundry
+As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications and it is a reason why we deploy our Flask application to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+
+Available services are:
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
+- <s>https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename</s>
+- <s>https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form</s>
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-detail?id=
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-valid
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-cluster/degree/bridge?componentId=
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-gender?id=
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/set-forename-rule?rid=
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-rule?id=
+- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-rules
+
+> Parameter `componentId` is unique identificator of cluster.
+
+> Parameter `id` is unique identificator of node.
+
+> Parameter `rid` is unique identificator of edge.
+
+> By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
+
+> Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud::
+> - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
+> - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
+
+> The Flask application used the Memgraph Cloud database. 
 
 ### Tableau
 
