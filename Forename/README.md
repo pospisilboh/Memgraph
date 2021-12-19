@@ -134,6 +134,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
 
 ### Memgraph Cloud
 
+Dataset from Memgraph database (exported dataset file `graph.cypherl`) we imported to Memgraph Cloud database. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
 
 ### Flask
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
@@ -159,7 +160,7 @@ Implemented services are:
 > By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
 ### IBM Cloud Foundry
-As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications and it is a reason why we deploy our Flask application to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications and it is a reason why we deploy our Flask application server to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
 Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
@@ -173,19 +174,11 @@ Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-rule?id=
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-rules
 
-> Parameter `componentId` is unique identificator of cluster.
-
-> Parameter `id` is unique identificator of node.
-
-> Parameter `rid` is unique identificator of edge.
-
-> By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
-
 > Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud::
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
 
-> The Flask application used the Memgraph Cloud database. 
+> The Flask application server used the Memgraph Cloud database. 
 
 ### Tableau
 
@@ -292,9 +285,9 @@ This dashboard gives the possibility to:
 <p/>
 
 ### Tableau Public
-Publish [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to Tableau Public is a way how to share our dashboards with others publicly
+Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to a Tableau Public is a way how to share our dashboards with others publicly.
 
-> Some functionalities of dashboards are limited, there aren't available web services provided by the Flask application server.
+> Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module `text_util.py`.
 
 <h2 id="data-model">Data model</h2>
 
@@ -316,11 +309,11 @@ Publish [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenam
 | Forename | nickNames | From web pages used for scraping. List of nicknames for the forename. |
 | Forename | origin | From web pages used for scraping. <p> Itálie, Severské země, anglický, anglosaský, aramejský, francouzský, germánský, hebrejský, hebrejský, holandský,	italský, jihoslovanský,	keltský, latinský,	maďarský, nejasný, německý, orientální, perský, polský, ruský |
 | Forename | source | Forename was found in web pages used for scraping. Source web pages for scraping are: www.kurzy.cz, www.e-horoskopy.cz, www.kdejsme.cz,  www.svatky.centrum.cz |
-| Forename | normalizedValue | CALL text_util.normalizeStr(value, 'cz') |
-| Forename | valueNumberCount | CALL text_util.getNumbersFromStr(value) |
-| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. <p> Create clusters by WCC algorithm <p> CALL weakly_connected_components.get() |
-| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. <p> CALL betweenness_centrality.get(FALSE,FALSE) |
-| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. <p> CALL pagerank.get() |
+| Forename | normalizedValue | Property created by function <p> text_util.normalizeStr(value, 'cz') |
+| Forename | valueNumberCount | Property created by function <p> text_util.getNumbersFromStr(value) |
+| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. <p> Create clusters by WCC algorithm <p> weakly_connected_components.get() |
+| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. Property created by algorithm <p> betweenness_centrality.get(FALSE,FALSE) |
+| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. Property created by algorithm <p> pagerank.get() |
 | Forename | anonymized | false/true |
 | Forename | anonymizationRule | Identification of rule based on which it was evaluated that anonymization will be performed. |
 | Rule | property | A node property name to which the rule will be applied (property: "value"). |
@@ -336,13 +329,13 @@ Publish [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenam
 | Type      | Property | Description |
 | :---        |    :----   | :---- |
 | SIMILAR_FORENAME_COMPARED_STRING | score | 0 ... not similar, 1 ... similar |
-| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
-| SIMILAR_FORENAME_LEVENSHTEIN | score | CALL text_util.levenshteinSimilarity(text1, text2) |
-| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
-| SIMILAR_FORENAME_JAROWINKLER | score | CALL text_util.jaroWinklerDistance(text1, text2) |
-| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
-| SIMILAR_FORENAME_JARO | score | CALL text_util.jaroDistance(text1, text2) |
-| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
+| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
+| SIMILAR_FORENAME_LEVENSHTEIN | score | Property created by function <p> text_util.levenshteinSimilarity(text1, text2) |
+| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
+| SIMILAR_FORENAME_JAROWINKLER | score | Property created by function <p> text_util.jaroWinklerDistance(text1, text2) |
+| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
+| SIMILAR_FORENAME_JARO | score | Property created by function <p> text_util.jaroDistance(text1, text2) |
+| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
 | DEFINED_BY | type | Type can be source or target. |
 | HAS_LAST_TWO_CHAR | degree | Nodes with label Forename or Gender can have relation HAS_LAST_TWO_CHAR to node with label LastTwoChar. |
 | HAS_GENDER |  | Nodes with label Forename can have relation HAS_GENDER to node with label Gender. |
