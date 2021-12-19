@@ -149,7 +149,6 @@ from forename.database.connection import Connection
 
 __all__ = ('Memgraph',)
 
-
 MG_HOST = os.getenv('MG_HOST', '127.0.0.1')
 MG_PORT = int(os.getenv('MG_PORT', '7687'))
 MG_USERNAME = os.getenv('MG_USERNAME', '')
@@ -157,8 +156,8 @@ MG_PASSWORD = os.getenv('MG_PASSWORD', '')
 MG_ENCRYPTED = os.getenv('MG_ENCRYPT', 'false').lower() == 'true'
 ```
 
-## Add Flask library to file “requirements.txt”
-Add Flask library to file `requirements.txt`.  If you want other libraries, just add them.
+## Add libraries (requirements.txt)
+Add libraries to file `requirements.txt`. If you want other libraries, just add them.
 ```
 certifi==2020.12.5
 click==7.1.2
@@ -178,8 +177,8 @@ gevent
 pymgclient
 ```
 
-## Manifest(manifest.yml)
-This is so simple application that it does not need much resources.  Please make sure don’t allocate much resources.
+## Manifest (manifest.yml)
+This is so simple application that it does not need much resources. Please make sure don’t allocate much resources.
 ```yml
 applications:
   - name: Foremame
@@ -189,16 +188,30 @@ applications:
     - python_buildpack
 ```
 
-## Commands run the application(Procfile)
+## Commands run the application (Procfile)
 Here just write down a command, which runs `app.py` application.
 ```py
 web: python app.py
 ```
 
 ## Deploy the application to cloud foundry
+We use the IBM® Cloud Foundry command-line interface (CLI) to download, modify, and redeploy our Cloud Foundry apps and service instances.
+
+Before you begin, download and install the IBM Cloud [CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started).
+
+Log in to IBM Cloud with your IBMid:
+```
+ibmcloud login
+```
+To access Cloud Foundry services, we must specify a Cloud Foundry `org` and `space`:
+```
+ibmcloud target -o <org name> -s <space name>
+```
+From <your_new_directory>, redeploy your app to IBM Cloud by using the following command:
 ```
 ibmcloud cf push
 ```
+Access our app by browsing to the app URL.
 
 ## Define environment variables
 
@@ -208,7 +221,6 @@ User defined variables are:
 - `MG_PORT`, 
 - `MG_USERNAME`
 
-
-
-
-
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/3951d2a40f953d6f8d44fb228b9483fc3afc5be3/Forename/Images/Cloud%20foundry%20-%20variables.png?raw=true" alt="User defined variables"/>
+<p/>
