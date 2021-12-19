@@ -159,8 +159,7 @@ Implemented services are:
 > By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
 ### IBM Cloud Foundry
-
-Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest and most reliable deployment of cloud-native applications and it is a reasons why we deploy our Flask application to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
 Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
@@ -185,6 +184,8 @@ Available services are:
 > Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud::
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
+
+> The Flask application used the Memgraph Cloud database. 
 
 ### Tableau
 
