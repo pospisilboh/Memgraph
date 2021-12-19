@@ -40,16 +40,17 @@ The solution is a mix of the following technologies and tools:
 - Jupyter Notebook
 - Flask
 - Mamgraph
+- [Memgraph Cloud](https://cloud.memgraph.com/login)
 - Cypher
 - SQL
 - D3.js
 - Tableau
 - Tableau public
-- OpenAPI
 - Beautiful Soup
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
 
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/491da55e8a3a345c7391b0de435b1b712ea4583c/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/59668115494131b06bb94c75e619985ceda33314/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### Eternal system
@@ -131,7 +132,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
       -   text_util.substring(text, start, end, step)
 
 ### Flask
-[**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing web services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
+[**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide web services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
 Implemented services are:
 - http://127.0.0.1:5000/get-cluster-recommendation?componentId=
