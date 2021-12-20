@@ -6,8 +6,6 @@
 
 [Dashboards are available in Tableau public](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
 
-## Table of Contents
-
 <div class="alert alert-block alert-info" style="margin-top: 20px">
 
 <font size = 3>
@@ -18,7 +16,7 @@
    
 3. <a href="#data-model">Data model</a>
 
-4. <a href="#sources">Sources</a>
+4. <a href="#sources">Additional Resources</a>
 
 
 </font>
@@ -49,6 +47,7 @@ The solution is a mix of the following technologies and tools:
 - Tableau
 - Tableau public
 - Beautiful Soup
+- Docker
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/59668115494131b06bb94c75e619985ceda33314/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
@@ -174,7 +173,7 @@ Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-rule?id=
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-rules
 
-> Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud::
+> Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud:
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
 
@@ -266,7 +265,8 @@ This dashboard gives the possibility:
 #### Forenames similarity
 
 This dashboard gives the possibility:
-- for a selected forename create in a database repair rule definition (node with label Rule) by the available Tableau action **Set forename rule**
+- for a selected forename get repair rule definition (node with label Rule) by the Tableau action `Get forename rule`
+- for a selected forename create repair rule definition (node with label Rule) by the Tableau action `Set forename rule`
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a93003f527596fb0b20dd393bca21ff3261b277c/Forename/Images/Forenames%20similarity.png?raw=true" alt="Forenames similarity" width="900"/>
@@ -300,21 +300,21 @@ Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_2021
 | Label      | Property | Description |
 | :---        |    :----   | :---- |
 | Forename | value | Forename from source system. |
-| Forename | degree | Forename degree (how often the forename is used in a source system) from a source system. |
+| Forename | degree | Forename `degree` (how often the forename is used in a source system) from a source system. |
 | Forename | valid | true ... if the forename was found in web pages used for scraping. |
 | Forename | gender | From web pages used for scraping. M ... Male, F ... Female.  |
 | Forename | nameDay | From web pages used for scraping. DD.MM. |
-| Forename | nameDayDay | Value of day (DD) extracted from nameDay. |
-| Forename | nameDayMonth | Value of month (MM) extracted from nameDay. |
+| Forename | nameDayDay | Value of day (DD) extracted from `nameDay`. |
+| Forename | nameDayMonth | Value of month (MM) extracted from `nameDay`. |
 | Forename | nickNames | From web pages used for scraping. List of nicknames for the forename. |
-| Forename | origin | From web pages used for scraping. <p> Itálie, Severské země, anglický, anglosaský, aramejský, francouzský, germánský, hebrejský, hebrejský, holandský,	italský, jihoslovanský,	keltský, latinský,	maďarský, nejasný, německý, orientální, perský, polský, ruský |
+| Forename | origin | From web pages used for scraping. Forename `origin` can be one of the following values: Itálie, Severské země, anglický, anglosaský, aramejský, francouzský, germánský, hebrejský, hebrejský, holandský,	italský, jihoslovanský,	keltský, latinský,	maďarský, nejasný, německý, orientální, perský, polský, ruský |
 | Forename | source | Forename was found in web pages used for scraping. Source web pages for scraping are: www.kurzy.cz, www.e-horoskopy.cz, www.kdejsme.cz,  www.svatky.centrum.cz |
-| Forename | normalizedValue | Property created by function <p> text_util.normalizeStr(value, 'cz') |
-| Forename | valueNumberCount | Property created by function <p> text_util.getNumbersFromStr(value) |
-| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. <p> Create clusters by WCC algorithm <p> weakly_connected_components.get() |
-| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. Property created by algorithm <p> betweenness_centrality.get(FALSE,FALSE) |
-| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. Property created by algorithm <p> pagerank.get() |
-| Forename | anonymized | false/true |
+| Forename | normalizedValue | Property created by function `text_util.normalizeStr(value, 'cz')` |
+| Forename | valueNumberCount | Property created by function `text_util.getNumbersFromStr(value)` |
+| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. Clusters are created by WCC algorithm `weakly_connected_components.get()` |
+| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. Property created by algorithm `betweenness_centrality.get(FALSE,FALSE)` |
+| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. Property created by algorithm  `pagerank.get()` |
+| Forename | anonymized | Can be false/true |
 | Forename | anonymizationRule | Identification of rule based on which it was evaluated that anonymization will be performed. |
 | Rule | property | A node property name to which the rule will be applied (property: "value"). |
 | Rule | source | Source value (source: "Adéla"). |
@@ -329,18 +329,18 @@ Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_2021
 | Type      | Property | Description |
 | :---        |    :----   | :---- |
 | SIMILAR_FORENAME_COMPARED_STRING | score | 0 ... not similar, 1 ... similar |
-| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
-| SIMILAR_FORENAME_LEVENSHTEIN | score | Property created by function <p> text_util.levenshteinSimilarity(text1, text2) |
-| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
-| SIMILAR_FORENAME_JAROWINKLER | score | Property created by function <p> text_util.jaroWinklerDistance(text1, text2) |
-| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
-| SIMILAR_FORENAME_JARO | score | Property created by function <p> text_util.jaroDistance(text1, text2) |
-| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm <p> bridges.get() |
+| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
+| SIMILAR_FORENAME_LEVENSHTEIN | score | Property created by function `text_util.levenshteinSimilarity(text1, text2)` |
+| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
+| SIMILAR_FORENAME_JAROWINKLER | score | Property created by function `text_util.jaroWinklerDistance(text1, text2)` |
+| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
+| SIMILAR_FORENAME_JARO | score | Property created by function `text_util.jaroDistance(text1, text2)` |
+| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
 | DEFINED_BY | type | Type can be source or target. |
-| HAS_LAST_TWO_CHAR | degree | Nodes with label Forename or Gender can have relation HAS_LAST_TWO_CHAR to node with label LastTwoChar. |
-| HAS_GENDER |  | Nodes with label Forename can have relation HAS_GENDER to node with label Gender. |
+| HAS_LAST_TWO_CHAR | degree | Nodes with label `Forename` or `Gender` can have relation `HAS_LAST_TWO_CHAR` to node with label `LastTwoChar`. |
+| HAS_GENDER |  | Nodes with label `Forename` can have relation `HAS_GENDER` to node with label `Gender`. |
 
-<h2 id="sources">Sources</h2>
+<h2 id="sources">Additional Resources</h2>
 
 https://docs.google.com/forms/d/e/1FAIpQLSdS1l27pfZ7GYExPuOPbiyhjgCZ7HwuN2U2Aii7Z5fSakWgDw/viewform
 
