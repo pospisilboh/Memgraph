@@ -54,7 +54,7 @@ The solution is a mix of the following technologies and tools:
    <img src="https://github.com/pospisilboh/Memgraph/blob/59668115494131b06bb94c75e619985ceda33314/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
-### Eternal system
+### External system
 From an external system, we extract `forenames` and their `degree`. Data for import are available as a *.csv file.
 ```csv
 degree,forename
