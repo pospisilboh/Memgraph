@@ -25,10 +25,10 @@
 <h2 id="description">Description of the solution</h2>
 
 By very simple data, `forenames` and their `degree`, we built dataset and created a framework that in near future will help us improve data quality and solve cases as are:
-- Customer 360,
-- Single Customer View,
-- Entity resolutions / Record linkage,
-- Master Data Management,
+- [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
+- [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
+- [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage),
+- [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management),
 - ...
 
 <h2 id="architecture">Solution architecture</h2>
@@ -77,7 +77,7 @@ The Python script in Jupyter Notebook using a graph database Memgraph. The main 
 - Load `forenames` and their `degree` from external system (*.csv file)
 - Data scraping by [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) from public web pages. Get another information to forenames as are `gender`, `name day`, `nick names`
 - Forename anonymization can be important because in forenames there can be email addresses, phone numbers, personal identificator.
-- Create similarity relations. We compare forenames by implemented functions in custom Query Module (`text_util.py`) and create relationships with an appropriate similarity `score`:
+- Create similarity relations. We compare forenames by implemented functions in custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) and create relationships with an appropriate similarity `score`:
    - SIMILAR_FORENAME_COMPARED_STRING
    - SIMILAR_FORENAME_LEVENSHTEIN
    - SIMILAR_FORENAME_JAROWINKLER
@@ -287,7 +287,7 @@ This dashboard gives the possibility to:
 ### Tableau Public
 Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to a Tableau Public is a way how to share our dashboards with others publicly.
 
-> Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module `text_util.py`.
+> Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules).
 
 <h2 id="data-model">Data model</h2>
 
@@ -309,11 +309,11 @@ Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_2021
 | Forename | nickNames | From web pages used for scraping. List of nicknames for the forename. |
 | Forename | origin | From web pages used for scraping. Forename `origin` can be one of the following values: Itálie, Severské země, anglický, anglosaský, aramejský, francouzský, germánský, hebrejský, hebrejský, holandský,	italský, jihoslovanský,	keltský, latinský,	maďarský, nejasný, německý, orientální, perský, polský, ruský |
 | Forename | source | Forename was found in web pages used for scraping. Source web pages for scraping are: www.kurzy.cz, www.e-horoskopy.cz, www.kdejsme.cz,  www.svatky.centrum.cz |
-| Forename | normalizedValue | Property created by function `text_util.normalizeStr(value, 'cz')` |
-| Forename | valueNumberCount | Property created by function `text_util.getNumbersFromStr(value)` |
-| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. Clusters are created by WCC algorithm `weakly_connected_components.get()` |
-| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. Property created by algorithm `betweenness_centrality.get(FALSE,FALSE)` |
-| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. Property created by algorithm  `pagerank.get()` |
+| Forename | normalizedValue | Property created by function `text_util.normalizeStr(value, 'cz')` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| Forename | valueNumberCount | Property created by function `text_util.getNumbersFromStr(value)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) |
+| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. Clusters are created by WCC algorithm `weakly_connected_components.get()`. |
+| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. Property created by algorithm `betweenness_centrality.get(FALSE,FALSE)`. |
+| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. Property created by algorithm  `pagerank.get()`. |
 | Forename | anonymized | Can be false/true |
 | Forename | anonymizationRule | Identification of rule based on which it was evaluated that anonymization will be performed. |
 | Rule | property | A node property name to which the rule will be applied (property: "value"). |
@@ -321,7 +321,7 @@ Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_2021
 | Rule | target | Target value (target: "ADéla"). |
 | Rule | type | Name of rule type (type: "forename_value"). |
 | Gender | value | Value of gender. Can be M ... Male, F ... Female |
-| LastTwoChar | value | Value of two last characters from forename. |
+| LastTwoChar | value | Value of two last characters from forename created by function `text_util.substring(text, start, end, step)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
 | LastTwoChar | genderDegree | Can be 1 ... the two last characters are part of only male or only female forenames or 2 ... the two last characters are part of male and female forenames too. |
 
 ### Relationships
@@ -329,13 +329,13 @@ Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_2021
 | Type      | Property | Description |
 | :---        |    :----   | :---- |
 | SIMILAR_FORENAME_COMPARED_STRING | score | 0 ... not similar, 1 ... similar |
-| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
-| SIMILAR_FORENAME_LEVENSHTEIN | score | Property created by function `text_util.levenshteinSimilarity(text1, text2)` |
-| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
-| SIMILAR_FORENAME_JAROWINKLER | score | Property created by function `text_util.jaroWinklerDistance(text1, text2)` |
-| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
-| SIMILAR_FORENAME_JARO | score | Property created by function `text_util.jaroDistance(text1, text2)` |
-| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()` |
+| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
+| SIMILAR_FORENAME_LEVENSHTEIN | score | Property created by function `text_util.levenshteinSimilarity(text1, text2)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
+| SIMILAR_FORENAME_JAROWINKLER | score | Property created by function `text_util.jaroWinklerDistance(text1, text2)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
+| SIMILAR_FORENAME_JARO | score | Property created by function `text_util.jaroDistance(text1, text2)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
 | DEFINED_BY | type | Type can be source or target. |
 | HAS_LAST_TWO_CHAR | degree | Nodes with label `Forename` or `Gender` can have relation `HAS_LAST_TWO_CHAR` to node with label `LastTwoChar`. |
 | HAS_GENDER |  | Nodes with label `Forename` can have relation `HAS_GENDER` to node with label `Gender`. |
