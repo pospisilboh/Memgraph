@@ -6,8 +6,6 @@
 
 [Dashboards are available in Tableau public](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
 
-## Table of Contents
-
 <div class="alert alert-block alert-info" style="margin-top: 20px">
 
 <font size = 3>
@@ -18,7 +16,7 @@
    
 3. <a href="#data-model">Data model</a>
 
-4. <a href="#sources">Sources</a>
+4. <a href="#sources">Additional Resources</a>
 
 
 </font>
@@ -27,10 +25,10 @@
 <h2 id="description">Description of the solution</h2>
 
 By very simple data, `forenames` and their `degree`, we built dataset and created a framework that in near future will help us improve data quality and solve cases as are:
-- Customer 360,
-- Single Customer View,
-- Entity resolutions / Record linkage,
-- Master Data Management,
+- [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
+- [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
+- [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage),
+- [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management),
 - ...
 
 <h2 id="architecture">Solution architecture</h2>
@@ -49,12 +47,13 @@ The solution is a mix of the following technologies and tools:
 - Tableau
 - Tableau public
 - Beautiful Soup
+- Docker
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/59668115494131b06bb94c75e619985ceda33314/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
-### Eternal system
+### External system
 From an external system, we extract `forenames` and their `degree`. Data for import are available as a *.csv file.
 ```csv
 degree,forename
@@ -78,7 +77,7 @@ The Python script in Jupyter Notebook using a graph database Memgraph. The main 
 - Load `forenames` and their `degree` from external system (*.csv file)
 - Data scraping by [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) from public web pages. Get another information to forenames as are `gender`, `name day`, `nick names`
 - Forename anonymization can be important because in forenames there can be email addresses, phone numbers, personal identificator.
-- Create similarity relations. We compare forenames by implemented functions in custom Query Module (`text_util.py`) and create relationships with an appropriate similarity `score`:
+- Create similarity relations. We compare forenames by implemented functions in custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) and create relationships with an appropriate similarity `score`:
    - SIMILAR_FORENAME_COMPARED_STRING
    - SIMILAR_FORENAME_LEVENSHTEIN
    - SIMILAR_FORENAME_JAROWINKLER
@@ -134,6 +133,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
 
 ### Memgraph Cloud
 
+Dataset from Memgraph database (exported dataset file `graph.cypherl`) we imported to Memgraph Cloud database. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
 
 ### Flask
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
@@ -159,7 +159,7 @@ Implemented services are:
 > By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
 ### IBM Cloud Foundry
-As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications and it is a reason why we deploy our Flask application to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications and it is a reason why we deploy our Flask application server to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
 Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
@@ -173,19 +173,11 @@ Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-rule?id=
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-rules
 
-> Parameter `componentId` is unique identificator of cluster.
-
-> Parameter `id` is unique identificator of node.
-
-> Parameter `rid` is unique identificator of edge.
-
-> By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
-
-> Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud::
+> Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud:
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
 
-> The Flask application used the Memgraph Cloud database. 
+> The Flask application server used the Memgraph Cloud database. 
 
 ### Tableau
 
@@ -226,13 +218,13 @@ This dashboard gives the possibility to analyze forenames clusters:
 > 
 > The forename with highest degree in cluster is male forename `Michal`, the second one is female forename `Michaela`.
 
-#### Forenames cluster graf
+#### Forenames cluster grapf
 
 This dashboard gives the possibility to analyze forenames clusters visually:
 - define node property (`betweenness`, `degre`, `pageRank`, `valid`)
 - define edge property (`bridge`, `score`)
 - scale nodes depending on defined node property
-- scale edges depending on on defined edge property
+- scale edges depending on defined edge property
 - hover over nodes or edges to get a popup with more information
 
 <p align="center">
@@ -241,7 +233,7 @@ This dashboard gives the possibility to analyze forenames clusters visually:
 
 > In the graph male forenames are blue, female forenames are yellow and forenames without defined gender are grey.
 
-#### Forename recommedation
+#### Forename recommendation
 
 This dashboard gives the possibility:
 - for a defined forename by the selected method (compareStr, levenshteinSimilarity, jaroDistance, jaroWinklerDistance) get recommended forenames.
@@ -254,7 +246,7 @@ This dashboard gives the possibility:
 
 > The list of recommended forenames is ordered by valid, score DESC, degree DESC.
 
-#### Forename gender recommedation
+#### Forename gender recommendation
 
 This dashboard gives the possibility:
 - for a selected forename generate forename gender recommendation graph
@@ -273,7 +265,8 @@ This dashboard gives the possibility:
 #### Forenames similarity
 
 This dashboard gives the possibility:
-- for a selected forename create in a database repair rule definition (node with label Rule) by the available Tableau action **Set forename rule**
+- for a selected forename get repair rule definition (node with label Rule) by the Tableau action `Get forename rule`
+- for a selected forename create repair rule definition (node with label Rule) by the Tableau action `Set forename rule`
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a93003f527596fb0b20dd393bca21ff3261b277c/Forename/Images/Forenames%20similarity.png?raw=true" alt="Forenames similarity" width="900"/>
@@ -292,9 +285,9 @@ This dashboard gives the possibility to:
 <p/>
 
 ### Tableau Public
-Publish [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to Tableau Public is a way how to share our dashboards with others publicly
+Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to a Tableau Public is a way how to share our dashboards with others publicly.
 
-> Some functionalities of dashboards are limited, there aren't available web services provided by the Flask application server.
+> Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules).
 
 <h2 id="data-model">Data model</h2>
 
@@ -307,28 +300,28 @@ Publish [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenam
 | Label      | Property | Description |
 | :---        |    :----   | :---- |
 | Forename | value | Forename from source system. |
-| Forename | degree | Forename degree (how often the forename is used in a source system) from a source system. |
+| Forename | degree | Forename `degree` (how often the forename is used in a source system) from a source system. |
 | Forename | valid | true ... if the forename was found in web pages used for scraping. |
 | Forename | gender | From web pages used for scraping. M ... Male, F ... Female.  |
 | Forename | nameDay | From web pages used for scraping. DD.MM. |
-| Forename | nameDayDay | Value of day (DD) extracted from nameDay. |
-| Forename | nameDayMonth | Value of month (MM) extracted from nameDay. |
+| Forename | nameDayDay | Value of day (DD) extracted from `nameDay`. |
+| Forename | nameDayMonth | Value of month (MM) extracted from `nameDay`. |
 | Forename | nickNames | From web pages used for scraping. List of nicknames for the forename. |
-| Forename | origin | From web pages used for scraping. <p> Itálie, Severské země, anglický, anglosaský, aramejský, francouzský, germánský, hebrejský, hebrejský, holandský,	italský, jihoslovanský,	keltský, latinský,	maďarský, nejasný, německý, orientální, perský, polský, ruský |
+| Forename | origin | From web pages used for scraping. Forename `origin` can be one of the following values: Itálie, Severské země, anglický, anglosaský, aramejský, francouzský, germánský, hebrejský, hebrejský, holandský,	italský, jihoslovanský,	keltský, latinský,	maďarský, nejasný, německý, orientální, perský, polský, ruský |
 | Forename | source | Forename was found in web pages used for scraping. Source web pages for scraping are: www.kurzy.cz, www.e-horoskopy.cz, www.kdejsme.cz,  www.svatky.centrum.cz |
-| Forename | normalizedValue | CALL text_util.normalizeStr(value, 'cz') |
-| Forename | valueNumberCount | CALL text_util.getNumbersFromStr(value) |
-| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. <p> Create clusters by WCC algorithm <p> CALL weakly_connected_components.get() |
-| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. <p> CALL betweenness_centrality.get(FALSE,FALSE) |
-| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. <p> CALL pagerank.get() |
-| Forename | anonymized | false/true |
+| Forename | normalizedValue | Property created by function `text_util.normalizeStr(value, 'cz')` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| Forename | valueNumberCount | Property created by function `text_util.getNumbersFromStr(value)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) |
+| Forename | componentId | The WCC algorithm finds sets of connected nodes in an undirected graph, where all nodes in the same set form a connected component. WCC is often used early in an analysis to understand the structure of a graph. Clusters are created by WCC algorithm `weakly_connected_components.get()`. |
+| Forename | betweenness | Betweenness centrality is a way of detecting the amount of influence a node has over the flow of information in a graph. It is often used to find nodes that serve as a bridge from one part of a graph to another. Property created by algorithm `betweenness_centrality.get(FALSE,FALSE)`. |
+| Forename | pageRank | The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it. Property created by algorithm  `pagerank.get()`. |
+| Forename | anonymized | Can be false/true |
 | Forename | anonymizationRule | Identification of rule based on which it was evaluated that anonymization will be performed. |
 | Rule | property | A node property name to which the rule will be applied (property: "value"). |
 | Rule | source | Source value (source: "Adéla"). |
 | Rule | target | Target value (target: "ADéla"). |
 | Rule | type | Name of rule type (type: "forename_value"). |
 | Gender | value | Value of gender. Can be M ... Male, F ... Female |
-| LastTwoChar | value | Value of two last characters from forename. |
+| LastTwoChar | value | Value of two last characters from forename created by function `text_util.substring(text, start, end, step)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
 | LastTwoChar | genderDegree | Can be 1 ... the two last characters are part of only male or only female forenames or 2 ... the two last characters are part of male and female forenames too. |
 
 ### Relationships
@@ -336,18 +329,18 @@ Publish [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenam
 | Type      | Property | Description |
 | :---        |    :----   | :---- |
 | SIMILAR_FORENAME_COMPARED_STRING | score | 0 ... not similar, 1 ... similar |
-| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
-| SIMILAR_FORENAME_LEVENSHTEIN | score | CALL text_util.levenshteinSimilarity(text1, text2) |
-| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
-| SIMILAR_FORENAME_JAROWINKLER | score | CALL text_util.jaroWinklerDistance(text1, text2) |
-| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
-| SIMILAR_FORENAME_JARO | score | CALL text_util.jaroDistance(text1, text2) |
-| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. <p> CALL bridges.get() |
+| SIMILAR_FORENAME_COMPARED_STRING | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
+| SIMILAR_FORENAME_LEVENSHTEIN | score | Property created by function `text_util.levenshteinSimilarity(text1, text2)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| SIMILAR_FORENAME_LEVENSHTEIN | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
+| SIMILAR_FORENAME_JAROWINKLER | score | Property created by function `text_util.jaroWinklerDistance(text1, text2)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| SIMILAR_FORENAME_JAROWINKLER | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
+| SIMILAR_FORENAME_JARO | score | Property created by function `text_util.jaroDistance(text1, text2)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
+| SIMILAR_FORENAME_JARO | bridge | A bridge in the graph can be described as an edge which if deleted, creates two disjoint graph components. Property created by algorithm `bridges.get()`. |
 | DEFINED_BY | type | Type can be source or target. |
-| HAS_LAST_TWO_CHAR | degree | Nodes with label Forename or Gender can have relation HAS_LAST_TWO_CHAR to node with label LastTwoChar. |
-| HAS_GENDER |  | Nodes with label Forename can have relation HAS_GENDER to node with label Gender. |
+| HAS_LAST_TWO_CHAR | degree | Nodes with label `Forename` or `Gender` can have relation `HAS_LAST_TWO_CHAR` to node with label `LastTwoChar`. |
+| HAS_GENDER |  | Nodes with label `Forename` can have relation `HAS_GENDER` to node with label `Gender`. |
 
-<h2 id="sources">Sources</h2>
+<h2 id="sources">Additional Resources</h2>
 
 https://docs.google.com/forms/d/e/1FAIpQLSdS1l27pfZ7GYExPuOPbiyhjgCZ7HwuN2U2Aii7Z5fSakWgDw/viewform
 
