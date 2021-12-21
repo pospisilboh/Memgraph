@@ -4,7 +4,7 @@
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-[Dashboards are available in Tableau public](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
+[Dashboards are available in Tableau public](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
 
 <div class="alert alert-block alert-info" style="margin-top: 20px">
 
@@ -50,7 +50,7 @@ The solution is a mix of the following technologies and tools:
 - Docker
 
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/59668115494131b06bb94c75e619985ceda33314/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/7b5ada238b7ff5487cfbb4555777b3fc4cbbca81/Forename/Images/Architecture%20(2).png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### External system
@@ -109,6 +109,25 @@ The Python script in Jupyter Notebook using a graph database Memgraph. The main 
    ```
 
 ### Memgraph
+
+#### Setting up Memgraph with Docker
+To start implementing and testing our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) in Memgraph, it is necessary to set up a Docker container first. We need to create and mount a volume to access the query_modules directory. This directory contains all of the built-in query modules and it’s where we can save new custom query modules, in our case our `text_util.py` file. 
+   
+Create an empty directory modules on your host machine and execute the following command:
+```sh
+docker volume create --driver local --opt type=none --opt device=~modules --opt o=bind modules
+```
+
+Now, we can start Memgraph and mount the created volume:
+```sh
+docker run -it --rm -v c:/modules:/mage/dist -p 7687:7687 -e MEMGRAPH="-query-execution-timeout-sec=0" memgraph
+```
+   
+The file `text_util.py` should be in the `c:/modules` directory.
+
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/7b5ada238b7ff5487cfbb4555777b3fc4cbbca81/Forename/Images/Docker.png" alt="Memgraph in docker" width="400"/>
+<p/>
 
 We used the power and simplicity of the Cypher query language and Memgraph’s extensions for algorithms such as:
 - Query Module
