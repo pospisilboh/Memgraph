@@ -6,6 +6,8 @@
 
 [Dashboards are available in Tableau public](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
 
+## Table of Contents
+
 <div class="alert alert-block alert-info" style="margin-top: 20px">
 
 <font size = 3>
@@ -200,7 +202,7 @@ Available services are:
 
 ### Tableau
 
-Data sources for Tableau dashboards are mentioned files `export_forename_nodes.csv` and `export_forename_relations.csv` and services provided by application server Flask. 
+Tableau is a powerful business intelligence and data visualization tool that has a very intuitive user interface. In our case we use Tableau as a user interface. Data sources for Tableau dashboards are mentioned files `export_forename_nodes.csv` and `export_forename_relations.csv` and services provided by application server Flask. 
 
 #### Forename dashboard
 
@@ -304,6 +306,7 @@ This dashboard gives the possibility to:
 <p/>
 
 ### Tableau Public
+
 Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to a Tableau Public is a way how to share our dashboards with others publicly.
 
 > Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules).
