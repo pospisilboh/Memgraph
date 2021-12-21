@@ -1,4 +1,4 @@
-# Forename
+# Forename analyzer
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
