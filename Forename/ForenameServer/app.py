@@ -1,11 +1,6 @@
 from flask import Flask, render_template, request, jsonify, make_response, send_from_directory
 from forename.database import Memgraph
 from forename import db_operations
-
-from flask_wtf import FlaskForm
-from wtforms import StringField, RadioField, FloatField, SubmitField
-from wtforms.validators import DataRequired
-
 from forename.recommendation import RecommendationForm
 
 import json
@@ -17,6 +12,10 @@ app = Flask(__name__)
 
 # Flask-WTF requires an encryption key - the string can be anything
 app.config['SECRET_KEY'] = 'C2HWGVoMGfNTBsrYQg8EcMrdTimkZfAb'
+
+@app.route('/get-path', methods=["POST", "GET"])
+def get_path():
+    return os.path.dirname(os.path.realpath(__file__)) + r'/download/'
 
 # http://127.0.0.1:5000/get-cluster-recommendation?componentId=
 @app.route('/get-cluster-recommendation', methods=["POST", "GET"])
@@ -104,15 +103,15 @@ def get_forenames_rules():
 
     # generate some file name   
     filename_sql_rules = 'sql_rules ' + timestamp_string + '.csv'
-    document_path = os.getcwd() + '\\download\\' + filename_sql_rules
-
+    document_path = os.path.dirname(os.path.realpath(__file__)) + r'/download/' + filename_sql_rules
+   
     with open(document_path, 'w', newline="", encoding='UTF-16') as file:
         csvwriter = csv.writer(file) # create a csvwriter object
         for x in rules:
             csvwriter.writerow([x['sql']]) # write the rest of the data
 
     filename_cypher_rules = 'cypher_rules ' + timestamp_string + '.csv'
-    document_path = os.getcwd() + '\\download\\' + filename_cypher_rules
+    document_path = os.path.dirname(os.path.realpath(__file__)) + r'/download/' + filename_cypher_rules
 
     with open(document_path, 'w', newline="", encoding='UTF-16') as file:
         csvwriter = csv.writer(file) # create a csvwriter object
@@ -131,7 +130,7 @@ def get_forenames_valid():
 
     # generate some file name   
     filename_sql_valid = 'sql_valid ' + timestamp_string + '.csv'
-    document_path = os.getcwd() + '\\download\\' + filename_sql_valid
+    document_path = os.path.dirname(os.path.realpath(__file__)) + r'/download/' + filename_sql_valid
  
     with open(document_path, 'w', newline="", encoding='UTF-16') as file:
         csvwriter = csv.writer(file) # create a csvwriter object
@@ -140,7 +139,7 @@ def get_forenames_valid():
 
     # generate some file name
     filename_cypher_valid = 'cypher_valid ' + timestamp_string + '.csv'
-    document_path = os.getcwd() + '\\download\\' + filename_cypher_valid
+    document_path = os.path.dirname(os.path.realpath(__file__)) + r'/download/' + filename_cypher_valid
 
     with open(document_path, 'w', newline="", encoding='UTF-16') as file:
         csvwriter = csv.writer(file) # create a csvwriter object
@@ -169,6 +168,7 @@ def get_graph_cluster(nodeProperty=None, relationProperty=None):
     
     return render_template('graph.html', nodeProperty=nodeProperty, relationProperty=relationProperty, nodes=nodes, edges=edges), 200
 
+# https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-gender?id=<id>
 # http://127.0.0.1:5000/get-graph-gender?id=<id>
 @app.route("/get-graph-gender", methods=["POST", "GET"])
 def get_graph_gender():
@@ -188,3 +188,11 @@ def get_graph_gender():
     edges = data['links']
     
     return render_template('graph_gender.html', nodes=nodes, edges=edges), 200
+
+cf_port = os.getenv("PORT")
+
+if __name__ == '__main__':
+	if cf_port is None:
+		app.run(host='0.0.0.0', port=5000, debug=True)
+	else:
+		app.run(host='0.0.0.0', port=int(cf_port), debug=True)

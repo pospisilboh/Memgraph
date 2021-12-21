@@ -1,0 +1,6 @@
+applications:
+  - name: Foremame
+    random-route: true
+    memory: 128M
+    buildpacks:
+    - python_buildpack

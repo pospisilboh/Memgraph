@@ -1,19 +1,6 @@
 from pathlib import Path
 import json
 
-def clear(db):
-    command = "MATCH (node) DETACH DELETE node"
-    db.execute_query(command)
-
-
-def populate_database(db, path):
-    file = open(path)
-    lines = file.readlines()
-    file.close()
-    for line in lines:
-        if len(line.strip()) != 0 and line[0] != '/':
-            db.execute_query(line)
-
 def get_forenames(db):
     command = "MATCH (n) RETURN n LIMIT 100;"
     forenames = db.execute_and_fetch(command)
@@ -287,7 +274,7 @@ def set_forename_rule(db, params):
     command = """
 
     MATCH (n1:Forename)-[r]->(n2:Forename)
-    WHERE ID(r) = $rid 
+    WHERE r.id = $rid 
 
     WITH n1 AS n1, n2 AS n2
 
@@ -365,7 +352,7 @@ def get_forenames_valid(db):
     return forename_objects
 
 def get_forename_detail(db, params):
-    command = "MATCH (n:Forename) WHERE ID(n) = $id RETURN n;"
+    command = "MATCH (n:Forename) WHERE n.id = $id RETURN n;"
     forenames = db.execute_and_fetch_params(command, params)
 
     forename_objects = []
@@ -384,7 +371,7 @@ def get_forename_detail(db, params):
     return forename_objects
 
 def get_forename_rule(db, params):
-    command = "MATCH (rule:Rule)-[:DEFINED_BY {type: 'target'}]->(n:Forename) WHERE ID(n) = $id RETURN rule;"
+    command = "MATCH (rule:Rule)-[:DEFINED_BY {type: 'target'}]->(n:Forename) WHERE n.id = $id RETURN rule;"
     forenames = db.execute_and_fetch_params(command, params)
 
     forename_objects = []
@@ -400,7 +387,7 @@ def get_forename_rule(db, params):
 def delete_forename_rule(db, params):
     command = """
     MATCH (rule:Rule)-[:DEFINED_BY {type: 'target'}]->(n:Forename)
-    WHERE ID(n) = $id
+    WHERE n.id = $id
     DETACH DELETE rule
     RETURN COUNT(*);
     """

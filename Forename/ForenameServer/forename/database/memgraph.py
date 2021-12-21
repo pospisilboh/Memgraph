@@ -5,12 +5,11 @@ from forename.database.connection import Connection
 __all__ = ('Memgraph',)
 
 
-MG_HOST = os.getenv('MG_HOST', '127.0.0.1')
+MG_HOST = os.getenv('MG_HOST', '127.0.0.1') #3.70.198.85
 MG_PORT = int(os.getenv('MG_PORT', '7687'))
 MG_USERNAME = os.getenv('MG_USERNAME', '')
 MG_PASSWORD = os.getenv('MG_PASSWORD', '')
 MG_ENCRYPTED = os.getenv('MG_ENCRYPT', 'false').lower() == 'true'
-
 
 class Memgraph:
     def __init__(self,
