@@ -26,7 +26,7 @@
 
 <h2 id="description">Description of the solution</h2>
 
-By very simple data, `forenames` and their `degree`, we built dataset and created a framework that in near future will help us improve data quality and solve cases as are:
+Using simple data, `forenames` and their `degree`, we built a dataset and later a framework, which soon will help us improve data quality and solve cases such as:
 - [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
 - [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
 - [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage),
@@ -56,7 +56,7 @@ The solution is a mix of the following technologies and tools:
 <p/>
 
 ### External system
-From an external system, we extract `forenames` and their `degree`. Data for import are available as a *.csv file.
+From an external system, we extracted `forenames` and their `degree`. Data for import are available as a *.csv file.
 ```csv
 degree,forename
 759,Drahomíra
@@ -66,32 +66,32 @@ degree,forename
 ```
 
 ### Public web pages
-Following public web pages were used for web scraping another information (gender, name day, nick names) using the implementation of a Web Scraping framework of Python called [**Beautiful Soup**](https://www.crummy.com/software/BeautifulSoup/bs4/doc/):
+Following public web pages were used for web scraping additional information (`gender`, `name day`, `nickname`) with the use of a Web Scraping framework by Python called [**Beautiful Soup**](https://www.crummy.com/software/BeautifulSoup/bs4/doc/):
 - [https://www.kurzy.cz](https://www.kurzy.cz/kalendar/svatky/abecedni-seznam-jmen/) ... `forename`, `gender`, `name day`
 - [http://www.e-horoskopy.cz](http://www.e-horoskopy.cz/vyznam-jmen.asp) ... `forename`, `gender`, `name day` and `nick names`
 - [https://www.kdejsme.cz](https://www.kdejsme.cz/seznam/) ... `forename`
 - [http://svatky.centrum.cz](http://svatky.centrum.cz/jmenny-seznam/?month=1&order=na) ... `forename`, `gender`, `name day`
 
-> If the forename is found in any web page, this forename is valid for us, we set a node property `valid = true`.
+> Every `forename` found on any web page is valid for us. We set a node property `valid = true`.
 
 ### Jupyter Notebook
-The Python script in Jupyter Notebook using a graph database Memgraph. The main purpose of [**Jupyter Notebook**](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb) is to prepare data for another processing:
-- Load `forenames` and their `degree` from external system (*.csv file)
-- Data scraping by [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) from public web pages. Get another information to forenames as are `gender`, `name day`, `nick names`
-- Forename anonymization can be important because in forenames there can be email addresses, phone numbers, personal identificator.
-- Create similarity relations. We compare forenames by implemented functions in custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) and create relationships with an appropriate similarity `score`:
+The Python script in Jupyter Notebook using a graph database Memgraph. The purpose of [**Jupyter Notebook**](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb) is to prepare data for further processing:
+- Load `forenames` and their `degree` from an external system (*.csv file)
+- Data scrap additional information (`gender`, `name day`, `nicknames`) from public web pages with [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
+- Forename anonymization should also be considered. Forenames might come with personal information such as email addresses, phone numbers, personal identification.
+- Create similarity relations. We compare forenames by implemented functions in custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules), and by that, we create relationships with an appropriate similarity `score`:
    - SIMILAR_FORENAME_COMPARED_STRING
    - SIMILAR_FORENAME_LEVENSHTEIN
    - SIMILAR_FORENAME_JAROWINKLER
    - SIMILAR_FORENAME_JARO
-- Create forename clusters. Clusters of forenames are created by the function `weakly_connected_components.get()`. For each node new property `componentId` is created. 
-- Create forename gender model. Prepare data model to support forename gender recommendation:
+- Create forename clusters. The forename clusters are created with the function `weakly_connected_components.get()`. For each node, a new property `componentId` is created.
+- Create a forename gender model. Prepare the forename gender data model to support forename gender recommendation:
    -  nodes with label `Gender` and `LastTwoChar`
    -  edges with type `HAS_GENDER` and `HAS_LAST_TWO_CHAR`
-- Nodes and relations enrichement. By the Mamgraph query modules calculate:
+- Nodes and relations enrichement. With the Mamgraph query modules calculate properties:
    - `betweenness centrality`, `pageRank` for nodes, 
    - `bridge` for relationships.
-- Export for Tableau. Following two files are created:
+- Create export files for Tableau. The following two files are created:
    - export_forename_nodes.csv
    ```csv
    id;value;normalizedValue;valid;anonymized;componentId;gender;nameDay;nameDayDay;nameDayMonth;origin;degree;betweenness;pageRank
