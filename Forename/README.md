@@ -113,9 +113,9 @@ The Python script in Jupyter Notebook using a graph database Memgraph. The purpo
 ### Memgraph
 
 #### Setting up Memgraph with Docker
-To start implementing and testing our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) in Memgraph, it is necessary to set up a Docker container first. We need to create and mount a volume to access the query_modules directory. This directory contains all of the built-in query modules and it’s where we can save new custom query modules, in our case our `text_util.py` file. 
+To start implementing and testing our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) in Memgraph, it is necessary to set up a Docker container first. We need to create and mount a volume to access the query modules directory. This directory contains all of the built-in query modules, and it’s where we can save new custom query modules, in our case, the `text_util.py` file. 
    
-Create an empty directory modules on your host machine and execute the following command:
+Create an empty directory module on your host machine and execute the following command:
 ```sh
 docker volume create --driver local --opt type=none --opt device=~modules --opt o=bind modules
 ```
@@ -154,10 +154,10 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
 
 ### Memgraph Cloud
 
-Dataset from Memgraph database (exported dataset file `graph.cypherl`) we imported to Memgraph Cloud database. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
+We exported the database from the Memgraph database by Memgraph Lab (exported dataset file `graph.cypherl`) and by Memgraph Lab imported the database to the Memgraph Cloud. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
 
 ### Flask
-[**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
+[**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services (web pages) that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
 Implemented services are:
 - http://127.0.0.1:5000/get-cluster-recommendation?componentId=
@@ -171,16 +171,16 @@ Implemented services are:
 - http://127.0.0.1:5000/get-forename-rule?id=
 - http://127.0.0.1:5000/get-forenames-rules
 
-> Parameter `componentId` is unique identificator of cluster.
+> Parameter `componentId` is a unique identificator of cluster.
 
-> Parameter `id` is unique identificator of node.
+> Parameter `id` is a unique identificator of node.
 
-> Parameter `rid` is unique identificator of edge.
+> Parameter `rid` is a unique identificator of edge.
 
-> By the service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
+> With  http://127.0.0.1:5000/set-forename-rule?rid= service, it is possible to create a repair rule definition in the database.
 
 ### IBM Cloud Foundry
-As an industry-standard platform as a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications and it is a reason why we deploy our Flask application server to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+As an industry-standard platform and a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications, and it is the reason why we can deploy our Flask application server to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
 Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
@@ -198,11 +198,11 @@ Available services are:
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
 
-> The Flask application server used the Memgraph Cloud database. 
+> The Flask application server deployed in IBM Cloud Foundry uses the Memgraph Cloud database. 
 
 ### Tableau
 
-Tableau is a powerful business intelligence and data visualization tool that has a very intuitive user interface. In our case we use Tableau as a user interface. Data sources for Tableau dashboards are mentioned files `export_forename_nodes.csv` and `export_forename_relations.csv` and services provided by application server Flask. 
+Tableau is a powerful business intelligence and data visualization tool that has an intuitive user interface. In our case, we use Tableau as a user interface. Data sources for Tableau dashboards are previously mentioned files, `export_forename_nodes.csv` and `export_forename_relations.csv`, and services provided by application server Flask.
 
 #### Forename dashboard
 
@@ -212,18 +212,18 @@ The main dashboard gives a base overview of what data are available.
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20dashboard.png?raw=true" alt="Forename dashboard" width="900"/>
 <p/>
 
-> The count of valid forenames is low (only 29,51 %) but their degree is high (96,08 %). In another word, there are only `3,92 %` of wrong forenames.
+> The count of valid forenames is low (only 29,51 %), but their degree is high (96,08 %). In other words, there are only `3,92 %` of wrong forenames.
 
-> There is a lot of forenames with no definition of gender (97,62 %), but their degree is only 10.68 % from all.
+> There are quite a few forenames with no definition of gender (97,62 %), but their degree is only 10.68 %.
 
-> Most popular male name is Petr, Most popular female name is Jana.
+> The most popular male name is Petr. The most popular female name is Jana.
 
 #### Forenames clusters
 
-This dashboard gives the possibility to analyze forenames clusters:
+This dashboard gives us a possibility to analyze forenames clusters:
 - count and list of forenames in each cluster
-- types of relations in the cluster
-- existed relations between forenames and their similarity score
+- types of relationships in a cluster
+- existing relationships between forenames and their similarity score
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20clusters.png?raw=true" alt="Forenames clusters" width="900"/>
@@ -235,9 +235,9 @@ This dashboard gives the possibility to analyze forenames clusters:
 > 
 > The sum of forenames degree is `20 542`.
 > 
-> The biggest cluster consists from `25` forenames.
+> The biggest cluster consists of `25` forenames.
 > 
-> The forename with highest degree in cluster is male forename `Michal`, the second one is female forename `Michaela`.
+> The forename with the highest degree in a cluster is a male forename `Michal`, and the second one is a female forename `Michaela`.
 
 #### Forenames cluster grapf
 
@@ -246,18 +246,18 @@ This dashboard gives the possibility to analyze forenames clusters visually:
 - define edge property (`bridge`, `score`)
 - scale nodes depending on defined node property
 - scale edges depending on defined edge property
-- hover over nodes or edges to get a popup with more information
+- hover over nodes or edges to get a pop-up with more information
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20cluster%20graf.png?raw=true" alt="Forenames cluster graf" width="900"/>
 <p/>
 
-> In the graph male forenames are blue, female forenames are yellow and forenames without defined gender are grey.
+> In the graph, male forenames are blue, female forenames are yellow, and forenames without defined gender are grey.
 
 #### Forename recommendation
 
-This dashboard gives the possibility:
-- for a defined forename by the selected method (compareStr, levenshteinSimilarity, jaroDistance, jaroWinklerDistance) get recommended forenames.
+This dashboard gives us a possibility to:
+- get recommended forenames for a defined forename using the selected methods (compareStr, levenshteinSimilarity, jaroDistance, jaroWinklerDistance).
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Foremame%20recommender.png?raw=true" alt="Forename recommedation" width="900"/>
@@ -265,23 +265,23 @@ This dashboard gives the possibility:
 
 > The defined name may not exist in the database.
 
-> The list of recommended forenames is ordered by valid, score DESC, degree DESC.
+> The list of recommended forenames is ordered by `valid`, `score` DESC, `degree` DESC.
 
 #### Forename gender recommendation
 
-This dashboard gives the possibility:
-- for a selected forename generate forename gender recommendation graph
+This dashboard gives us a possibility to:
+- generate a forename gender recommendation graph for a selected forename 
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20gender%20recommender.png?raw=true" alt="Forename gender recommedation" width="900"/>
 <p/>
 
-> In the graph, there are nodes with the label **LastTwoChar** that represent values of the last two characters from forenames. Some of them are:
+> On the graph, there are nodes with the label **LastTwoChar** that represent the last two characters in forenames. Some of them are:
 > - part of only male forenames (blue),
 > - part of only female forenames (yellow),
-> - part of male and female forenames too (grey).
+> - part of both male and female forenames (grey).
 
-> For the selected forename **Dennis** by the generated recommendation graph the recommended gender of forename **Dennis** is male.
+> Using the generated recommendation graph for a selected forename `Dennis`, we get a recommendation that `Dennis` is a `male` forename.
 
 #### Forenames similarity
 
