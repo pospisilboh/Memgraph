@@ -36,20 +36,21 @@ Using simple data, `forenames` and their `degree`, we built a dataset and later 
 <h2 id="architecture">Solution architecture</h2>
 
 The solution is a mix of the following technologies and tools:
-- Python
-- Jupyter Notebook
-- Flask
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Python](https://www.python.org/)
+- [Jupyter Notebook](https://jupyter.org/)
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
-- Memgraph
-- Memgraph Lab
+- [Memgraph](https://memgraph.com/)
+- [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
 - Cypher
 - SQL
-- D3.js
-- Tableau
-- Tableau public
-- Beautiful Soup
-- Docker
+- [D3.js](https://www.d3-graph-gallery.com/network)
+- [Tableau](https://www.tableau.com/)
+- [Tableau Public](https://public.tableau.com/en-us/s/about)
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Docker](https://www.docker.com/)
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/7b5ada238b7ff5487cfbb4555777b3fc4cbbca81/Forename/Images/Architecture%20(2).png?raw=true" alt="Architecture" width="900"/>
@@ -306,8 +307,9 @@ This dashboard gives the possibility to:
 <p/>
 
 ### Tableau Public
+[Tableau Public](https://public.tableau.com/en-us/s/about) is a free platform to publicly share and explore data visualizations online. Anyone can create visualizations using either Tableau Desktop Professional Edition or the free Public Edition. 
 
-Publish the Tableau [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) to a Tableau Public is a way how to share our dashboards with others publicly.
+Publish the [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) from local Tableau Desktop Professional Edition to a Tableau Public is a way how to share our dashboards with others publicly.
 
 > Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules).
 
