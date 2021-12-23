@@ -199,7 +199,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
       -   text_util.uuid_generate()
       -   text_util.substring(text, start, end, step)
 
-### Memgraph Cloud
+### Memgraph database in Memgraph Cloud
 
 We exported the database from the Memgraph database by Memgraph Lab (exported dataset file `graph.cypherl`) and by Memgraph Lab imported the database to the Memgraph Cloud. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
 
@@ -226,7 +226,7 @@ Implemented services are:
 
 > With  http://127.0.0.1:5000/set-forename-rule?rid= service, it is possible to create a repair rule definition in the database.
 
-### IBM Cloud Foundry
+### Flask Application Server in IBM Cloud Foundry
 As an industry-standard platform and a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications, and it is the reason why we can deploy our Flask application server to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
 Available services are:
@@ -247,7 +247,7 @@ Available services are:
 
 > The Flask application server deployed in IBM Cloud Foundry uses the Memgraph Cloud database. 
 
-<h3 id="Tableau">Tableau</h3>
+<h3 id="Tableau dashboards">Tableau dashboards</h3>
 
 Tableau is a powerful business intelligence and data visualization tool that has an intuitive user interface. In our case, we use Tableau as a user interface. Data sources for Tableau dashboards are:
 - previously mentioned imported files `export_forename_nodes.csv` and `export_forename_relations.csv`,  
@@ -360,7 +360,8 @@ This dashboard gives the possibility to:
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20repair%20rules.png?raw=true" alt="Forename repair rules" width="900"/>
 <p/>
 
-### Tableau Public
+### Tableau dashboards in Tableau Public
+
 [Tableau Public](https://public.tableau.com/en-us/s/about) is a free platform to publicly share and explore data visualizations online. Anyone can create visualizations using either Tableau Desktop Professional Edition or the free Public Edition. 
 
 Publish the [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) from local Tableau Desktop Professional Edition to a Tableau Public is a way how to share our dashboards with others publicly.
@@ -374,7 +375,7 @@ Publish the [dashboards](https://public.tableau.com/views/Forenames_20211216/For
    <img src="https://github.com/pospisilboh/Memgraph/blob/58cbaa5780df48841b542f0e10e77dd080c6eec5/Forename/Images/Data%20model.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
 <p/>
 
-### Nodes
+### Nodes definition
 
 | Label      | Property | Description |
 | :---        |    :----   | :---- |
@@ -403,7 +404,7 @@ Publish the [dashboards](https://public.tableau.com/views/Forenames_20211216/For
 | LastTwoChar | value | Value of two last characters from forename created by function `text_util.substring(text, start, end, step)` from [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules). |
 | LastTwoChar | genderDegree | Can be 1 ... the two last characters are part of only male or only female forenames or 2 ... the two last characters are part of male and female forenames too. |
 
-### Relationships
+### Relationships definition
 
 | Type      | Property | Description |
 | :---        |    :----   | :---- |
