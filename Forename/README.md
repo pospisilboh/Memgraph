@@ -20,18 +20,19 @@
 <h2 id="description">Description of the solution</h2>
 
 Using simple data, `forenames` and their `degree`, we built a <a href="#data-model">graph</a> and later a solution, which soon will help us improve data quality and solve cases such as:
-- [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
-- [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
-- [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage),
-- [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management),
+- [Customer 360](https://profisee.com/customer-360-what-why-and-how/)
+- [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view)
+- [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage)
+- [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management)
 - ...
 
 Main **business** features of our solution are:
-- <a href="#Forenames clusters analyzer">Forenames clusters analyzer</a>,
-- <a href="#Forenames clusters graph analyzer">Forenames clusters graph analyzer</a>,
-- <a href="#Forename recommendation">Forename recommendation</a>,
-- <a href="#Forename gender recommendation">Forename gender recommendation</a>,
-- <a href="#Forename repair rules">Forename repair rules</a>.
+- <a href="#Forenames clusters analyzer">Forenames clusters analyzer</a>
+- <a href="#Forenames clusters graph analyzer">Forenames clusters graph analyzer</a>
+- <a href="#Forename recommendation">Forename recommendation</a>
+- <a href="#Forename gender recommendation">Forename gender recommendation</a>
+- <a href="#Forename repair rules setter">Forename repair rules setter</a>
+- <a href="#Forename repair rules getter">Forename repair rules getter</a>
 
 Live demo is available in [here](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
 
@@ -42,19 +43,19 @@ Live demo is available in [here](https://public.tableau.com/views/Forenames_2021
 Main **technical** abilities of our solution are:
 - Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text,
 - By [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb):
-   - Load data to Memgraph database from *.csv files,
-   - Scrap data from public web pages and save them to Memgraph database,
-   - Generate new node and edge properties by Memgraph query modules,
-   - Create similarity relations,
-   - Create clusters,
+   - Load data to Memgraph database from *.csv files
+   - Scrap data from public web pages and save them to Memgraph database
+   - Generate new node and edge properties by Memgraph query modules
+   - Create similarity relations
+   - Create clusters
    - Create export files for Tableau
-- [Application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) implemented in Flask that provide services (web pages),
-- Embedded the web pages in <a href="#Tableau">dashboards</a> of Tableau and Tableau Public,
-- Graph visualization by [D3.js](https://www.d3-graph-gallery.com/network),
+- [Application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) implemented in Flask that provide services (web pages)
+- Embedded the web pages in <a href="#Tableau">dashboards</a> of Tableau and Tableau Public
+- Graph visualization by [D3.js](https://www.d3-graph-gallery.com/network)
 - Public part of the solution consist of:
-   - Application server hostet in [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry),
-   - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login),
-   - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about).
+   - Application server hostet in [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
+   - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login)
+   - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about)
 
 <h2 id="architecture">Solution architecture</h2>
 
@@ -311,7 +312,7 @@ This dashboard gives us a possibility to:
 
 > Using the generated recommendation graph for a selected forename `Dennis`, we get a recommendation that `Dennis` is a `male` forename.
 
-#### Forenames similarity
+<h4 id="Forename repair rules setter">Forename repair rules setter</h4>
 
 This dashboard gives the possibility:
 - for a selected forename get repair rule definition (node with label Rule) by the Tableau action `Get forename rule`
@@ -323,7 +324,7 @@ This dashboard gives the possibility:
 
 > Functionality to export all created repair rules in a form of Sql or Cypher scripts is available via the dashboard **Forename repair rules**.
 
-<h4 id="Forename repair rules">Forename repair rules</h4>
+<h4 id="Forename repair rules getter">Forename repair rules getter</h4>
 
 This dashboard gives the possibility to:
 - list all defined repair rules
