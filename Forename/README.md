@@ -182,7 +182,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
 
 We exported the database from the Memgraph database by Memgraph Lab (exported dataset file `graph.cypherl`) and by Memgraph Lab imported the database to the Memgraph Cloud. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
 
-### Flask
+### Flask Application Server
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services (web pages) that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
 Implemented services are:
@@ -228,7 +228,9 @@ Available services are:
 
 <h3 id="Tableau">Tableau</h3>
 
-Tableau is a powerful business intelligence and data visualization tool that has an intuitive user interface. In our case, we use Tableau as a user interface. Data sources for Tableau dashboards are previously mentioned files, `export_forename_nodes.csv` and `export_forename_relations.csv`, and services provided by application server Flask.
+Tableau is a powerful business intelligence and data visualization tool that has an intuitive user interface. In our case, we use Tableau as a user interface. Data sources for Tableau dashboards are:
+- previously mentioned imported files `export_forename_nodes.csv` and `export_forename_relations.csv`,  
+- services (embedded web pages) provided by Flask Application server.
 
 #### Forename dashboard
 
