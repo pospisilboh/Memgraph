@@ -1,10 +1,32 @@
 # Forename analyzer
 
+Using simple data, `forenames` and their `degree`, we built a dataset and later a solution, which soon will help us improve data quality and solve cases such as:
+- [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
+- [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
+- [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage),
+- [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management),
+- ...
+
+Main **business** features of our solution are:
+- Forenames clusters analyzer,
+- Forenames clusters graph analyzer,
+- Forename recommendation,
+- Forename gender recommendation,
+- Forename repair rules.
+
+Live demo is available in [here](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
+
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-[Dashboards are available in Tableau public](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
+Main **technical** features of our solution are:
+- Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text,
+- Ability to load data to Memgraph from *.csv files,
+- Ability to scrap data to Memgraph from public web pages,
+- 
+- Application server implemented in Flask that provide services (web pages) to Tableau or Tableau Public,
+- Application server hostet in cloud 
 
 ## Table of Contents
 
@@ -20,18 +42,8 @@
 
 4. <a href="#sources">Additional Resources</a>
 
-
 </font>
 </div>
-
-<h2 id="description">Description of the solution</h2>
-
-Using simple data, `forenames` and their `degree`, we built a dataset and later a framework, which soon will help us improve data quality and solve cases such as:
-- [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
-- [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
-- [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage),
-- [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management),
-- ...
 
 <h2 id="architecture">Solution architecture</h2>
 
@@ -52,6 +64,7 @@ The solution is a mix of the following technologies and tools:
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [Docker](https://www.docker.com/)
 
+<h3 id="architecture">Architecture diagram</h3>
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/7b5ada238b7ff5487cfbb4555777b3fc4cbbca81/Forename/Images/Architecture%20(2).png?raw=true" alt="Architecture" width="900"/>
 <p/>
@@ -219,7 +232,7 @@ The main dashboard gives a base overview of what data are available.
 
 > The most popular male name is Petr. The most popular female name is Jana.
 
-#### Forenames clusters
+#### Forenames clusters analyzer
 
 This dashboard gives us a possibility to analyze forenames clusters:
 - count and list of forenames in each cluster
@@ -227,7 +240,7 @@ This dashboard gives us a possibility to analyze forenames clusters:
 - existing relationships between forenames and their similarity score
 
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20clusters.png?raw=true" alt="Forenames clusters" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20clusters.png?raw=true" alt="Forenames clusters analyzer" width="900"/>
 <p/>
 
 > The count of forenames in the cluster is `20`.
@@ -240,7 +253,7 @@ This dashboard gives us a possibility to analyze forenames clusters:
 > 
 > The forename with the highest degree in a cluster is a male forename `Michal`, and the second one is a female forename `Michaela`.
 
-#### Forenames cluster grapf
+#### Forenames clusters graph analyzer
 
 This dashboard gives the possibility to analyze forenames clusters visually:
 - define node property (`betweenness`, `degre`, `pageRank`, `valid`)
@@ -250,7 +263,7 @@ This dashboard gives the possibility to analyze forenames clusters visually:
 - hover over nodes or edges to get a pop-up with more information
 
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20cluster%20graf.png?raw=true" alt="Forenames cluster graf" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forenames%20cluster%20graf.png?raw=true" alt="Forenames clusters graph analyzer" width="900"/>
 <p/>
 
 > In the graph, male forenames are blue, female forenames are yellow, and forenames without defined gender are grey.
