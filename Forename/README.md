@@ -15,16 +15,16 @@
    - [Public web pages](https://github.com/pospisilboh/Memgraph/tree/master/Forename#public-web-pages)
    - [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/tree/master/Forename#jupyter-notebook)
    - [Memgraph database](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database)
-   - [Memgraph database in Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-cloud)
+   - [Memgraph database in Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-in-memgraph-cloud)
    - [Flask Application Server](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server)
-   - [Flask Application Server in IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#ibm-cloud-foundry)
-   - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau)
-   - [Tableau dashboards in Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-public)
+   - [Flask Application Server in IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-in-ibm-cloud-foundry)
+   - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
+   - [Tableau dashboards in Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-in-tableau-public)
    
 3. <a href="#data-model">Data model</a>
    - [Data model diagram](https://github.com/pospisilboh/Memgraph/tree/master/Forename#data-model-diagram)
-   - [Nodes definition](https://github.com/pospisilboh/Memgraph/tree/master/Forename#nodes)
-   - [Relationships definition](https://github.com/pospisilboh/Memgraph/tree/master/Forename#relationships)
+   - [Nodes definition](https://github.com/pospisilboh/Memgraph/tree/master/Forename#nodes-definition)
+   - [Relationships definition](https://github.com/pospisilboh/Memgraph/tree/master/Forename#relationships-definition)
 
 4. <a href="#sources">Additional Resources</a>
 
