@@ -31,7 +31,7 @@ Main **business** features of our solution are:
 - <a href="#Forenames clusters graph analyzer">Forenames clusters graph analyzer</a>
 - <a href="#Forename recommendation">Forename recommendation</a>
 - <a href="#Forename gender recommendation">Forename gender recommendation</a>
-- <a href="#Forename repair rules setter">Forename repair rules setter</a>
+- <a href="#Forename repair rules recommendation">Forename repair rules recommendation</a>
 - <a href="#Forename repair rules getter">Forename repair rules getter</a>
 
 Live demo is available in [here](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
@@ -312,7 +312,7 @@ This dashboard gives us a possibility to:
 
 > Using the generated recommendation graph for a selected forename `Dennis`, we get a recommendation that `Dennis` is a `male` forename.
 
-<h4 id="Forename repair rules setter">Forename repair rules setter</h4>
+<h4 id="Forename repair rules recommendation">Forename repair rules recommendation</h4>
 
 This dashboard gives the possibility:
 - for a selected forename get repair rule definition (node with label Rule) by the Tableau action `Get forename rule`
@@ -322,13 +322,19 @@ This dashboard gives the possibility:
    <img src="https://github.com/pospisilboh/Memgraph/blob/a93003f527596fb0b20dd393bca21ff3261b277c/Forename/Images/Forenames%20similarity.png?raw=true" alt="Forenames similarity" width="900"/>
 <p/>
 
-> Functionality to export all created repair rules in a form of Sql or Cypher scripts is available via the dashboard **Forename repair rules**.
+> By a recommendation:
+> - by the similarity relation type `SIMILAR_FORENAME_COMPARED_STRING` we can create forename repair rules that can repair `8 641` forenames in the external system
+> - by the similarity relation type `SIMILAR_FORENAME_LEVENSHTEIN` we can create forename repair rules that can repair `2 023` forenames in the external system
+> - by the similarity relation type `SIMILAR_FORENAME_JAROWINKLER`) we can create forename repair rules that can repair `4 464` forenames in the external system
+> - by the similarity relation type `SIMILAR_FORENAME_JARO`) we can create forename repair rules that can repair `1 885` forenames in the external system
+
+> Functionality to export all created forename repair rules in a form of `Sql` or `Cypher` scripts is available via the dashboard `Forename repair rules getter`.
 
 <h4 id="Forename repair rules getter">Forename repair rules getter</h4>
 
 This dashboard gives the possibility to:
-- list all defined repair rules
-- download Sql or Cypher script with repair rules
+- list all defined forename repair rules
+- download `Sql` or `Cypher` script with forename repair rules
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20repair%20rules.png?raw=true" alt="Forename repair rules" width="900"/>
