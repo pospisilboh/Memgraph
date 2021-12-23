@@ -9,6 +9,10 @@
 1. <a href="#description">Description of the solution</a>
 
 2. <a href="#architecture">Solution architecture</a>
+   https://github.com/pospisilboh/Memgraph/tree/master/Forename#architecture-diagram
+   https://github.com/pospisilboh/Memgraph/tree/master/Forename#external-system
+   https://github.com/pospisilboh/Memgraph/tree/master/Forename#public-web-pages
+   https://github.com/pospisilboh/Memgraph/tree/master/Forename#jupyter-notebook
    
 3. <a href="#data-model">Data model</a>
 
@@ -137,7 +141,7 @@ The Python script in Jupyter Notebook using a graph database Memgraph. The purpo
    ...
    ```
 
-### Memgraph
+### Memgraph database
 
 #### Setting up Memgraph with Docker
 To start implementing and testing our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) in Memgraph, it is necessary to set up a Docker container first. We need to create and mount a volume to access the query modules directory. This directory contains all of the built-in query modules, and it’s where we can save new custom query modules, in our case, the `text_util.py` file. 
