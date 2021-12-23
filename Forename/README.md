@@ -9,10 +9,17 @@
 1. <a href="#description">Description of the solution</a>
 
 2. <a href="#architecture">Solution architecture</a>
-   https://github.com/pospisilboh/Memgraph/tree/master/Forename#architecture-diagram
-   https://github.com/pospisilboh/Memgraph/tree/master/Forename#external-system
-   https://github.com/pospisilboh/Memgraph/tree/master/Forename#public-web-pages
-   https://github.com/pospisilboh/Memgraph/tree/master/Forename#jupyter-notebook
+   
+   - [Architecture diagram](https://github.com/pospisilboh/Memgraph/tree/master/Forename#architecture-diagram)
+   - [External system](https://github.com/pospisilboh/Memgraph/tree/master/Forename#external-system)
+   - [Public web pages](https://github.com/pospisilboh/Memgraph/tree/master/Forename#public-web-pages)
+   - [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/tree/master/Forename#jupyter-notebook)
+   - [Memgraph database](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database)
+   - [Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-cloud)
+   - [Flask Application Server](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server)
+   - [IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#ibm-cloud-foundry)
+   - [Tableau](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau)
+   - [Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-public)
    
 3. <a href="#data-model">Data model</a>
 
@@ -45,7 +52,7 @@ Live demo is available in [here](https://public.tableau.com/views/Forenames_2021
 <p/>
 
 Main **technical** abilities of our solution are:
-- Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text,
+- Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text
 - By [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb):
    - Load data to Memgraph database from *.csv files
    - Scrap data from public web pages and save them to Memgraph database
@@ -60,6 +67,12 @@ Main **technical** abilities of our solution are:
    - Application server hostet in [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
    - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login)
    - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about)
+
+List of functions available in Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules):
+
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/ccb16c9694d8aa85427848c5b59155647d6507a5/Forename/Images/Custom%20Query%20Module%20-%20text_util.png?raw=true" alt=" Memgraph Custom Query Module" width="900"/>
+<p/>
 
 <h2 id="architecture">Solution architecture</h2>
 
@@ -353,6 +366,7 @@ Publish the [dashboards](https://public.tableau.com/views/Forenames_20211216/For
 
 <h2 id="data-model">Data model</h2>
 
+### Data model diagram
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/58cbaa5780df48841b542f0e10e77dd080c6eec5/Forename/Images/Data%20model.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
 <p/>
