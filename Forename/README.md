@@ -48,7 +48,7 @@ Main **business** features of our solution are:
 - <a href="#Forename repair rules recommendation">Forename repair rules recommendation</a>
 - <a href="#Forename repair rules getter">Forename repair rules getter</a>
 
-Live demo is available in [here](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
+Live demo is available in [here](https://public.tableau.com/app/profile/bobovo.eu/viz/Forenames_20211216/Forenamedashboard).
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
@@ -364,7 +364,7 @@ This dashboard gives the possibility to:
 
 [Tableau Public](https://public.tableau.com/en-us/s/about) is a free platform to publicly share and explore data visualizations online. Anyone can create visualizations using either Tableau Desktop Professional Edition or the free Public Edition. 
 
-Publish the [dashboards](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) from local Tableau Desktop Professional Edition to a Tableau Public is a way how to share our dashboards with others publicly.
+Publish the [dashboards](https://public.tableau.com/app/profile/bobovo.eu/viz/Forenames_20211216/Forenamedashboard) from local Tableau Desktop Professional Edition to a Tableau Public is a way how to share our dashboards with others publicly.
 
 > Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules).
 
