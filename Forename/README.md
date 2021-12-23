@@ -1,6 +1,6 @@
 # Forename analyzer
 
-Using simple data, `forenames` and their `degree`, we built a dataset and later a solution, which soon will help us improve data quality and solve cases such as:
+Using simple data, `forenames` and their `degree`, we built a <a href="#data-model">graph</a> and later a solution, which soon will help us improve data quality and solve cases such as:
 - [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
 - [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
 - [Entity resolutions / Record linkage](https://en.wikipedia.org/wiki/Record_linkage),
