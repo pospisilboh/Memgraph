@@ -22,18 +22,20 @@ Live demo is available in [here](https://public.tableau.com/views/Forenames_2021
 
 Main **technical** abilities of our solution are:
 - Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text,
-- Load data to Memgraph database from *.csv files,
-- Scrap data from public web pages and save them to Memgraph database,
-- Generate new node and edge properties by Memgraph query modules,
-- Create similarity relations with property `score`,
-- Create clusters,
-- Application server implemented in Flask that provide services (web pages),
-- Embedded web pages in Tableau and Tableau Public,
-- Graph visualization by D3.js,
-- Public part of the solution:
-   - Application server hostet in IBM Cloud,
-   - Memgraph database in Memgraph Cloud,
-   - Tableau dashboards in Tableau Public
+- By [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb):
+   - Load data to Memgraph database from *.csv files,
+   - Scrap data from public web pages and save them to Memgraph database,
+   - Generate new node and edge properties by Memgraph query modules,
+   - Create similarity relations,
+   - Create clusters,
+   - Create export files for Tableau
+- [Application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) implemented in Flask that provide services (web pages),
+- Embedded the web pages in <a href="#Tableau">dashboards</a> of Tableau and Tableau Public,
+- Graph visualization by [D3.js](https://www.d3-graph-gallery.com/network),
+- Public part of the solution consist of:
+   - Application server hostet in [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry),
+   - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login),
+   - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about).
 
 ## Table of Contents
 
@@ -61,13 +63,14 @@ The solution is a mix of the following technologies and tools:
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
-- Cypher
-- SQL
+- [Cypher](https://en.wikipedia.org/wiki/Cypher_(query_language))
+- [SQL](https://cs.wikipedia.org/wiki/SQL)
 - [D3.js](https://www.d3-graph-gallery.com/network)
 - [Tableau](https://www.tableau.com/)
 - [Tableau Public](https://public.tableau.com/en-us/s/about)
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [Docker](https://www.docker.com/)
+- [ArchiMate](https://pubs.opengroup.org/architecture/archimate3-doc/)
 
 <h3 id="architecture">Architecture diagram</h3>
 <p align="center">
@@ -179,16 +182,16 @@ We exported the database from the Memgraph database by Memgraph Lab (exported da
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services (web pages) that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
 Implemented services are:
-- http://127.0.0.1:5000/get-cluster-recommendation?componentId=
-- http://127.0.0.1:5000/get-forename-recommendation?forename=
-- http://127.0.0.1:5000/forename-recommendation-form
-- http://127.0.0.1:5000/get-forename-detail?id=
-- http://127.0.0.1:5000/get-forenames-valid
-- http://127.0.0.1:5000/get-graph-cluster/degree/bridge?componentId=
-- http://127.0.0.1:5000/get-graph-gender?id=
-- http://127.0.0.1:5000/set-forename-rule?rid=
-- http://127.0.0.1:5000/get-forename-rule?id=
-- http://127.0.0.1:5000/get-forenames-rules
+- `http://127.0.0.1:5000/get-cluster-recommendation?componentId=`
+- `http://127.0.0.1:5000/get-forename-recommendation?forename=`
+- `http://127.0.0.1:5000/forename-recommendation-form`
+- `http://127.0.0.1:5000/get-forename-detail?id=`
+- `http://127.0.0.1:5000/get-forenames-valid`
+- `http://127.0.0.1:5000/get-graph-cluster/degree/bridge?componentId=`
+- `http://127.0.0.1:5000/get-graph-gender?id=`
+- `http://127.0.0.1:5000/set-forename-rule?rid=`
+- `http://127.0.0.1:5000/get-forename-rule?id=`
+- `http://127.0.0.1:5000/get-forenames-rules`
 
 > Parameter `componentId` is a unique identificator of cluster.
 
@@ -219,7 +222,7 @@ Available services are:
 
 > The Flask application server deployed in IBM Cloud Foundry uses the Memgraph Cloud database. 
 
-### Tableau
+<h3 id="Tableau">Tableau</h3>
 
 Tableau is a powerful business intelligence and data visualization tool that has an intuitive user interface. In our case, we use Tableau as a user interface. Data sources for Tableau dashboards are previously mentioned files, `export_forename_nodes.csv` and `export_forename_relations.csv`, and services provided by application server Flask.
 
