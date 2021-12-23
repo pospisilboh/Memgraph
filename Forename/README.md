@@ -1,5 +1,24 @@
 # Forename analyzer
 
+## Table of Contents
+
+<div class="alert alert-block alert-info" style="margin-top: 20px">
+
+<font size = 3>
+
+1. <a href="#description">Description of the solution</a>
+
+2. <a href="#architecture">Solution architecture</a>
+   
+3. <a href="#data-model">Data model</a>
+
+4. <a href="#sources">Additional Resources</a>
+
+</font>
+</div>
+
+<h2 id="description">Description of the solution</h2>
+
 Using simple data, `forenames` and their `degree`, we built a <a href="#data-model">graph</a> and later a solution, which soon will help us improve data quality and solve cases such as:
 - [Customer 360](https://profisee.com/customer-360-what-why-and-how/),
 - [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view),
@@ -36,21 +55,6 @@ Main **technical** abilities of our solution are:
    - Application server hostet in [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry),
    - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login),
    - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about).
-
-## Table of Contents
-
-<div class="alert alert-block alert-info" style="margin-top: 20px">
-
-<font size = 3>
-
-1. <a href="#architecture">Solution architecture</a>
-   
-2. <a href="#data-model">Data model</a>
-
-3. <a href="#sources">Additional Resources</a>
-
-</font>
-</div>
 
 <h2 id="architecture">Solution architecture</h2>
 
