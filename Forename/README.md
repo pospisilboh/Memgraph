@@ -9,10 +9,10 @@ Using simple data, `forenames` and their `degree`, we built a dataset and later 
 
 Main **business** features of our solution are:
 - <a href="#Forenames clusters analyzer">Forenames clusters analyzer</a>,
-- Forenames clusters graph analyzer,
-- Forename recommendation,
-- Forename gender recommendation,
-- Forename repair rules.
+- <a href="#Forenames clusters graph analyzer">Forenames clusters graph analyzer</a>,
+- <a href="#Forename recommendation">Forename recommendation</a>,
+- <a href="#Forename gender recommendation">Forename gender recommendation</a>,
+- <a href="#Forename repair rules">Forename repair rules</a>.
 
 Live demo is available in [here](https://public.tableau.com/views/Forenames_20211216/Forenamesclusters?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link).
 
@@ -237,8 +237,6 @@ The main dashboard gives a base overview of what data are available.
 
 > The most popular male name is Petr. The most popular female name is Jana.
 
-#### Forenames clusters analyzer
-
 <h4 id="Forenames clusters analyzer">Forenames clusters analyzer</h4>
 
 This dashboard gives us a possibility to analyze forenames clusters:
@@ -260,7 +258,7 @@ This dashboard gives us a possibility to analyze forenames clusters:
 > 
 > The forename with the highest degree in a cluster is a male forename `Michal`, and the second one is a female forename `Michaela`.
 
-#### Forenames clusters graph analyzer
+<h4 id="Forenames clusters graph analyzer">Forenames clusters graph analyzer</h4>
 
 This dashboard gives the possibility to analyze forenames clusters visually:
 - define node property (`betweenness`, `degre`, `pageRank`, `valid`)
@@ -275,7 +273,7 @@ This dashboard gives the possibility to analyze forenames clusters visually:
 
 > In the graph, male forenames are blue, female forenames are yellow, and forenames without defined gender are grey.
 
-#### Forename recommendation
+<h4 id="Forename recommendation">Forename recommendation</h4>
 
 This dashboard gives us a possibility to:
 - get recommended forenames for a defined forename using the selected methods (compareStr, levenshteinSimilarity, jaroDistance, jaroWinklerDistance).
@@ -288,7 +286,7 @@ This dashboard gives us a possibility to:
 
 > The list of recommended forenames is ordered by `valid`, `score` DESC, `degree` DESC.
 
-#### Forename gender recommendation
+<h4 id="Forename gender recommendation">Forename gender recommendation</h4>
 
 This dashboard gives us a possibility to:
 - generate a forename gender recommendation graph for a selected forename 
@@ -316,7 +314,7 @@ This dashboard gives the possibility:
 
 > Functionality to export all created repair rules in a form of Sql or Cypher scripts is available via the dashboard **Forename repair rules**.
 
-#### Forename repair rules
+<h4 id="Forename repair rules">Forename repair rules</h4>
 
 This dashboard gives the possibility to:
 - list all defined repair rules
