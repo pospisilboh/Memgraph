@@ -8,7 +8,7 @@ Using simple data, `forenames` and their `degree`, we built a dataset and later 
 - ...
 
 Main **business** features of our solution are:
-- Forenames clusters analyzer,
+- <a href="#Forenames clusters analyzer">Forenames clusters analyzer</a>,
 - Forenames clusters graph analyzer,
 - Forename recommendation,
 - Forename gender recommendation,
@@ -20,13 +20,20 @@ Live demo is available in [here](https://public.tableau.com/views/Forenames_2021
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-Main **technical** features of our solution are:
+Main **technical** abilities of our solution are:
 - Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text,
-- Ability to load data to Memgraph from *.csv files,
-- Ability to scrap data to Memgraph from public web pages,
-- 
-- Application server implemented in Flask that provide services (web pages) to Tableau or Tableau Public,
-- Application server hostet in cloud 
+- Load data to Memgraph database from *.csv files,
+- Scrap data from public web pages and save them to Memgraph database,
+- Generate new node and edge properties by Memgraph query modules,
+- Create similarity relations with property `score`,
+- Create clusters,
+- Application server implemented in Flask that provide services (web pages),
+- Embedded web pages in Tableau and Tableau Public,
+- Graph visualization by D3.js,
+- Public part of the solution:
+   - Application server hostet in IBM Cloud,
+   - Memgraph database in Memgraph Cloud,
+   - Tableau dashboards in Tableau Public
 
 ## Table of Contents
 
@@ -34,13 +41,11 @@ Main **technical** features of our solution are:
 
 <font size = 3>
 
-1. <a href="#description">Description of the solution</a>
-
-2. <a href="#architecture">Solution architecture</a>
+1. <a href="#architecture">Solution architecture</a>
    
-3. <a href="#data-model">Data model</a>
+2. <a href="#data-model">Data model</a>
 
-4. <a href="#sources">Additional Resources</a>
+3. <a href="#sources">Additional Resources</a>
 
 </font>
 </div>
@@ -102,7 +107,7 @@ The Python script in Jupyter Notebook using a graph database Memgraph. The purpo
 - Create a forename gender model. Prepare the forename gender data model to support forename gender recommendation:
    -  nodes with label `Gender` and `LastTwoChar`
    -  edges with type `HAS_GENDER` and `HAS_LAST_TWO_CHAR`
-- Nodes and relations enrichement. With the Mamgraph query modules calculate properties:
+- Nodes and relations enrichement. With the Memgraph query modules calculate properties:
    - `betweenness centrality`, `pageRank` for nodes, 
    - `bridge` for relationships.
 - Create export files for Tableau. The following two files are created:
@@ -233,6 +238,8 @@ The main dashboard gives a base overview of what data are available.
 > The most popular male name is Petr. The most popular female name is Jana.
 
 #### Forenames clusters analyzer
+
+<h4 id="Forenames clusters analyzer">Forenames clusters analyzer</h4>
 
 This dashboard gives us a possibility to analyze forenames clusters:
 - count and list of forenames in each cluster
