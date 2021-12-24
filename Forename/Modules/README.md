@@ -2,7 +2,7 @@
 
 Cypher has some basic functions to work with text but a lot of useful functions for string manipulation, comparison, and filtering are missing. Memgraph supports extending the query language with user-written procedures. These procedures are grouped into modules (Query Modules), which can then be loaded on startup or later on. 
 
-We created the query module `text_util.py` because it will contain utility functions that are needed to work with text.
+We created a custom query module `text_util.py` that contains utility functions that are needed to work with text.
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/7980a2d858d23a039229eb467e874cbcd2f7cf79/Forename/Images/Custom%20Query%20Module%20-%20text_util.png?raw=true" alt="Custom Query Module - text_util" width="900"/>
