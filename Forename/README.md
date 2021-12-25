@@ -86,6 +86,7 @@ The solution is a mix of the following technologies and tools:
 - [Jupyter Notebook](https://jupyter.org/)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
+- [GCP App Engine](https://cloud.google.com/appengine)
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
@@ -100,7 +101,7 @@ The solution is a mix of the following technologies and tools:
 
 <h3 id="architecture">Architecture diagram</h3>
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/7b5ada238b7ff5487cfbb4555777b3fc4cbbca81/Forename/Images/Architecture%20(2).png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/f72d24eced755469b802c4ea8f75666f9c75b295/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### External system
