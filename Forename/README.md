@@ -69,7 +69,10 @@ Main **technical** abilities of our solution are:
 - Embedded the web pages in <a href="#Tableau">dashboards</a> of Tableau and Tableau Public
 - Graph visualization by [D3.js](https://www.d3-graph-gallery.com/network)
 - Public part of the solution consist of:
-   - Application server hostet in [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
+   - Application server hostet on:
+      - [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry) or
+      - [GCP App Engine](https://cloud.google.com/appengine) or
+      - [Amazon Lightsail](https://aws.amazon.com/lightsail/?sc_icampaign=pac_lightsail_root&sc_ichannel=ha&sc_icontent=awssm-1111&sc_iplace=signin&trk=ha_awssm-1111)
    - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login)
    - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about)
 
@@ -99,11 +102,12 @@ The solution is a mix of the following technologies and tools:
 - [Tableau Public](https://public.tableau.com/en-us/s/about)
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [Docker](https://www.docker.com/)
+- [Docker Hub](https://hub.docker.com)
 - [ArchiMate](https://pubs.opengroup.org/architecture/archimate3-doc/)
 
 <h3 id="architecture">Architecture diagram</h3>
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/f72d24eced755469b802c4ea8f75666f9c75b295/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/f0cee46084bdc663a981c94d0a05192f7e5a70ec/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### External system
