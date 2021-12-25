@@ -18,7 +18,7 @@
    - [Memgraph database in Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-in-memgraph-cloud)
    - [Flask Application Server](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server)
    - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
-   - [Flask Application Server on GCP App Engine environment](https://)
+   - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
    - [Tableau dashboards in Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-in-tableau-public)
    
@@ -250,7 +250,7 @@ Available services are:
 
 > The Flask application server deployed on IBM Cloud Foundry uses the Memgraph Cloud database.
 
-### Flask Application Server on GCP App Engine environment
+### Flask Application Server on GCP App Engine
 App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand.
 
 Description how to deploy our Python Flask application server on the GCP App Engine (Flexible environment) environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
