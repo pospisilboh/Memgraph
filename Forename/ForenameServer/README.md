@@ -9,7 +9,7 @@
 3. <a href="#Flask Application Server on the IBM Cloud Foundry">Flask Application Server on the IBM Cloud Foundry</a>
 4. <a href="#Flask Application Server on Amazon Lightsail">Flask Application Server on Amazon Lightsail</a>
 5. <a href="#Flask Application Server on the GCP App Engine">Flask Application Server on the GCP App Engine</a>
-
+6. <a href="#Flask Application Server on the DigitalOcean Apps">Flask Application Server on the DigitalOcean Apps</a>	
 </font>
 </div>
 
@@ -361,4 +361,44 @@ gcloud app deploy /home/pospisil_boh/Memgraph/Forename/ForenameServer/app.yaml
 View and monitor the app:
 ```
 gcloud app browse
+```
+
+<h1 id="Flask Application Server on the DigitalOcean Apps">Flask Application Server on the DigitalOcean Apps</h1>
+App Platform is a Platform-as-a-Service (PaaS) offering that allows developers to publish code directly to DigitalOcean servers without worrying about the underlying infrastructure.
+
+## YAML File
+As an alternative to configuring your app in the control panel, you can define an app specification using YAML.
+
+```yml	
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+name: bobovo-forenameserver-forename
+region: fra
+services:
+- envs:
+  - key: MG_HOST
+    scope: RUN_AND_BUILD_TIME
+    value: 3.70.198.85
+  - key: MG_PASSWORD
+    scope: RUN_AND_BUILD_TIME
+    value: ***
+  - key: MG_PORT
+    scope: RUN_AND_BUILD_TIME
+    value: "7687"
+  - key: MG_USERNAME
+    scope: RUN_AND_BUILD_TIME
+    value: ***@***com
+  http_port: 5000
+  image:
+    registry: bobovo
+    registry_type: DOCKER_HUB
+    repository: forenameserver_forename
+    tag: latest
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: bobovo-forenameserver-forename
+  routes:
+  - path: /
+  source_dir: /
 ```
