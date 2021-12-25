@@ -1,4 +1,18 @@
-# Flask application
+# Table of Contents
+
+<div class="alert alert-block alert-info" style="margin-top: 20px">
+
+<font size = 3>
+
+1. <a href="#Flask application server">Flask application server</a>
+2. <a href="#Flask application server on the local">Flask application server on the local</a>
+3. <a href="#Flask application server on the IBM Cloud Foundry">Flask application server on the IBM Cloud Foundry</a>
+4. <a href="#Flask application server on the GCP App Engine">Flask application server on the GCP App Engine</a>
+
+</font>
+</div>
+
+<h1 id="Flask application server">Flask application server</h1>
 
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing services that are consumed by Tableau or Tableau Public dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
@@ -111,8 +125,8 @@ Implemented services are:
 
 > By the web service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
-#  Flask application on the IBM cloud foundry environment
-Description how to deploy our Python Flask application on the IBM cloud foundry environment.
+
+<h1 id="Flask application server on the local">Flask application server on the local</h1>
 
 ## Flask application (app.py)
 ```py
@@ -139,7 +153,6 @@ if __name__ == '__main__':
 	else:
 		app.run(host='0.0.0.0', port=int(cf_port), debug=True)
 ```
-
 
 ## Flask application (memgraph.py)
 ```py
@@ -176,6 +189,68 @@ Flask-WTF>=0.14.2
 gevent
 pymgclient
 ```
+
+## Dockerfile (Dockerfile)
+```dockerfile
+FROM python:3.8
+
+# Install CMake
+RUN apt-get update && \
+  apt-get --yes install cmake && \
+  rm -rf /var/lib/apt/lists/*
+
+# Install Python packages
+COPY requirements.txt ./
+RUN pip3 install -r requirements.txt
+
+# Copy the source code
+COPY . /app
+
+RUN mkdir -p /app/download
+
+WORKDIR /app
+
+# Set the environment variables
+ENV FLASK_ENV=development
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+# Start the web application
+ENTRYPOINT ["python3", "app.py"]
+```
+
+## Docker Compose (docker-compose.yml)
+Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. 
+
+```yml
+version: '3'
+services:
+  forename:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    environment:
+      MG_HOST: 3.70.198.85
+      MG_PASSWORD: ***
+      MG_PORT: 7687
+      MG_USERNAME: ***@***.com
+```
+
+Description how to deploy our Python Flask application server on the local.
+
+```
+docker-compose build
+```
+
+```
+docker-compose up
+```
+
+<h1 id="Flask application server on the IBM Cloud Foundry">Flask application server on the IBM Cloud Foundry</h1>
+
+Description how to deploy our Python Flask application server on the IBM cloud foundry environment.
 
 ## Manifest (manifest.yml)
 This is so simple application that it does not need much resources. Please make sure don’t allocate much resources.
@@ -225,11 +300,11 @@ User defined variables are:
    <img src="https://github.com/pospisilboh/Memgraph/blob/3951d2a40f953d6f8d44fb228b9483fc3afc5be3/Forename/Images/Cloud%20foundry%20-%20variables.png?raw=true" alt="User defined variables"/>
 <p/>
 
-#  Flask application on the GCP App Engine environment
+<h1 id="Flask application server on the GCP App Engine">Flask application server on the GCP App Engine</h1>
 
 App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand.
 
-Description how to deploy our Python Flask application on the GCP App Engine (Flexible environment) environment.
+Description how to deploy our Python Flask application server on the GCP App Engine (Flexible environment) environment.
 
 ## Configuration File (app.yml)
 You configure your App Engine app's settings in the app.yaml file. The app.yaml file also contains information about your app's code, such as the runtime and the latest version identifier.
@@ -244,36 +319,6 @@ env_variables:
   MG_PORT: "7687"
   MG_USERNAME: "***@***.***"
 ```
-
-## Dockerfile (Dockerfile)
-```dockerfile
-FROM python:3.8
-
-# Install CMake
-RUN apt-get update && \
-  apt-get --yes install cmake && \
-  rm -rf /var/lib/apt/lists/*
-
-# Install Python packages
-COPY requirements.txt ./
-RUN pip3 install -r requirements.txt
-
-# Copy the source code
-COPY . /app
-
-RUN mkdir -p /app/download
-
-WORKDIR /app
-
-# Set the environment variables
-ENV FLASK_ENV=development
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
-
-# Start the web application
-ENTRYPOINT ["python3", "app.py"]
-```
-
 
 ## Create a Python app in the App Engine Flexible Environment
 

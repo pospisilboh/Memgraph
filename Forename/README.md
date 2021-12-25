@@ -17,7 +17,8 @@
    - [Memgraph database](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database)
    - [Memgraph database in Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-in-memgraph-cloud)
    - [Flask Application Server](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server)
-   - [Flask Application Server in IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-in-ibm-cloud-foundry)
+   - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
+   - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
    - [Tableau dashboards in Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-in-tableau-public)
    
@@ -206,6 +207,8 @@ We exported the database from the Memgraph database by Memgraph Lab (exported da
 ### Flask Application Server
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services (web pages) that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
+Description how to run our Python Flask application server on the local environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+
 Implemented services are:
 - `http://127.0.0.1:5000/get-cluster-recommendation?componentId=`
 - `http://127.0.0.1:5000/get-forename-recommendation?forename=`
@@ -226,8 +229,10 @@ Implemented services are:
 
 > With  http://127.0.0.1:5000/set-forename-rule?rid= service, it is possible to create a repair rule definition in the database.
 
-### Flask Application Server in IBM Cloud Foundry
-As an industry-standard platform and a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications, and it is the reason why we can deploy our Flask application server to IBM Cloud Foundry. Description of how to deploy the Python Flask application on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+### Flask Application Server on IBM Cloud Foundry
+As an industry-standard platform and a service (PaaS), Cloud Foundry ensures the fastest, easiest, and most reliable deployment of cloud-native applications, and it is the reason why we can deploy our Flask application server to IBM Cloud Foundry. 
+
+Description of how to deploy the Python Flask application server on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
 Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
@@ -241,11 +246,34 @@ Available services are:
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-rule?id=
 - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-rules
 
-> Following services are not supported because there is not possible to deploy custom query module to Memgraph Cloud:
+> Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
 
-> The Flask application server deployed in IBM Cloud Foundry uses the Memgraph Cloud database. 
+> The Flask application server deployed on IBM Cloud Foundry uses the Memgraph Cloud database.
+
+### Flask Application Server on GCP App Engine
+App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand.
+
+Description how to deploy our Python Flask application server on the GCP App Engine (Flexible environment) environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+
+Available services are:
+- https://forenames.ey.r.appspot.com/get-cluster-recommendation?componentId=
+- <s>https://forenames.ey.r.appspot.com/get-forename-recommendation?forename</s>
+- <s>https://forenames.ey.r.appspot.com/forename-recommendation-form</s>
+- https://forenames.ey.r.appspot.com/get-forename-detail?id=
+- https://forenames.ey.r.appspot.com/get-forenames-valid
+- https://forenames.ey.r.appspot.com/degree/bridge?componentId=
+- https://forenames.ey.r.appspot.com/get-graph-gender?id=
+- https://forenames.ey.r.appspot.com/set-forename-rule?rid=
+- https://forenames.ey.r.appspot.com/get-forename-rule?id=
+- https://forenames.ey.r.appspot.com/get-forenames-rules
+
+> Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
+> - https://forenames.ey.r.appspot.com/forename-recommendation-form
+> - https://forenames.ey.r.appspot.com/get-forename-recommendation?forename=
+
+> The Flask application server deployed on the GCP App Engine uses the Memgraph Cloud database.
 
 <h3 id="Tableau dashboards">Tableau dashboards</h3>
 
