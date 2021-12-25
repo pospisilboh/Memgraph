@@ -20,7 +20,7 @@
       - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
       - [Flask Application Server on Amazon Lightsail](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-amazon-lightsail)
       - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
-      - [Flask Application Server on DigitalOcean Apps]()
+      - [Flask Application Server on DigitalOcean Apps](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-digitalocean-apps)
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
    - [Tableau dashboards on Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-on-tableau-public)
    
