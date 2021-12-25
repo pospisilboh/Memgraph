@@ -5,8 +5,8 @@
 <font size = 3>
 
 1. <a href="#Flask application server">Flask application server</a>
-2. <a href="#Flask application server on the IBM cloud foundry environment">Flask application server on the IBM cloud foundry environment</a>
-3. <a href="#Flask application server on the GCP App Engine environment">Flask application server on the GCP App Engine environment</a>
+2. <a href="#Flask application server on the IBM Cloud Foundry">Flask application server on the IBM Cloud Foundry</a>
+3. <a href="#Flask application server on the GCP App Engine">Flask application server on the GCP App Engine</a>
 
 </font>
 </div>
@@ -124,9 +124,9 @@ Implemented services are:
 
 > By the web service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
-<h1 id="Flask application server on the IBM cloud foundry environment">Flask application server on the IBM cloud foundry environment</h1>
+<h1 id="Flask application server on the IBM Cloud Foundry">Flask application server on the IBM Cloud Foundry</h1>
 
-Description how to deploy our Python Flask application on the IBM cloud foundry environment.
+Description how to deploy our Python Flask application server on the IBM cloud foundry environment.
 
 ## Flask application (app.py)
 ```py
@@ -239,11 +239,11 @@ User defined variables are:
    <img src="https://github.com/pospisilboh/Memgraph/blob/3951d2a40f953d6f8d44fb228b9483fc3afc5be3/Forename/Images/Cloud%20foundry%20-%20variables.png?raw=true" alt="User defined variables"/>
 <p/>
 
-<h1 id="Flask application server on the GCP App Engine environment">Flask application server on the GCP App Engine environment</h1>
+<h1 id="Flask application server on the GCP App Engine">Flask application server on the GCP App Engine</h1>
 
 App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand.
 
-Description how to deploy our Python Flask application on the GCP App Engine (Flexible environment) environment.
+Description how to deploy our Python Flask application server on the GCP App Engine (Flexible environment) environment.
 
 ## Configuration File (app.yml)
 You configure your App Engine app's settings in the app.yaml file. The app.yaml file also contains information about your app's code, such as the runtime and the latest version identifier.
