@@ -45,7 +45,7 @@ def get_forename_recommendation():
 @app.route('/forename-recommendation-form', methods=['GET', 'POST'])
 def forename_recommendation_form():
     form = RecommendationForm()
-    message = ""
+
     if form.validate_on_submit():
         forename = form.forename.data
         method = form.method.data
@@ -168,7 +168,6 @@ def get_graph_cluster(nodeProperty=None, relationProperty=None):
     
     return render_template('graph.html', nodeProperty=nodeProperty, relationProperty=relationProperty, nodes=nodes, edges=edges), 200
 
-# https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-gender?id=<id>
 # http://127.0.0.1:5000/get-graph-gender?id=<id>
 @app.route("/get-graph-gender", methods=["POST", "GET"])
 def get_graph_gender():
