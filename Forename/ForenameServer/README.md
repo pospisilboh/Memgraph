@@ -224,3 +224,80 @@ User defined variables are:
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/3951d2a40f953d6f8d44fb228b9483fc3afc5be3/Forename/Images/Cloud%20foundry%20-%20variables.png?raw=true" alt="User defined variables"/>
 <p/>
+
+#  Flask application on the GCP App Engine environment
+
+App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand.
+
+Description how to deploy our Python Flask application on the GCP App Engine (Flexible environment) environment.
+
+## Configuration File (app.yml)
+You configure your App Engine app's settings in the app.yaml file. The app.yaml file also contains information about your app's code, such as the runtime and the latest version identifier.
+```yml
+runtime: custom
+env: flex
+#entrypoint: gunicorn -b :$PORT -b :5000 main:app
+
+env_variables:
+  MG_HOST: "3.70.198.85"
+  MG_PASSWORD: "***"
+  MG_PORT: "7687"
+  MG_USERNAME: "***@***.***"
+```
+
+## Dockerfile (Dockerfile)
+```dockerfile
+FROM python:3.8
+
+# Install CMake
+RUN apt-get update && \
+  apt-get --yes install cmake && \
+  rm -rf /var/lib/apt/lists/*
+
+# Install Python packages
+COPY requirements.txt ./
+RUN pip3 install -r requirements.txt
+
+# Copy the source code
+COPY . /app
+
+RUN mkdir -p /app/download
+
+WORKDIR /app
+
+# Set the environment variables
+ENV FLASK_ENV=development
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+# Start the web application
+ENTRYPOINT ["python3", "app.py"]
+```
+
+
+## Create a Python app in the App Engine Flexible Environment
+
+In Cloud Shell, configure gcloud to use your project:
+```
+gcloud config set project forenames
+```
+Enable App Engine:
+```
+gcloud app create
+```
+Instead of creating a new app, clone app from GitHub.
+```
+git clone https://github.com/pospisilboh/Memgraph.git
+```
+To explore the app's source files, open the app's directory in the Cloud Shell Editor:
+```
+cloudshell workspace Memgraph/Forename/ForenameServer/
+```
+Deploy the app:
+```
+gcloud app deploy /home/pospisil_boh/Memgraph/Forename/ForenameServer/app.yaml
+```
+View and monitor the app:
+```
+gcloud app browse
+```
