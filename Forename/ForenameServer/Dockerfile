@@ -1,42 +1,23 @@
-FROM python:3.7
+FROM python:3.8
 
-# Install cmake
+# Install CMake
 RUN apt-get update && \
-    apt-get --yes install cmake
+  apt-get --yes install cmake && \
+  rm -rf /var/lib/apt/lists/*
 
-# Install poetry
-RUN pip install -U pip \
-    && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-ENV PATH="${PATH}:/root/.poetry/bin"
+# Install Python packages
+COPY requirements.txt ./
+RUN pip3 install -r requirements.txt
 
-# Install mgclient
-RUN apt-get install -y git cmake make gcc g++ libssl-dev && \
-    git clone https://github.com/memgraph/mgclient.git /mgclient && \
-    cd mgclient && \
-    git checkout 5ae69ea4774e9b525a2be0c9fc25fb83490f13bb && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install
-
-# Install pymgclient
-RUN git clone https://github.com/memgraph/pymgclient /pymgclient && \
-    cd pymgclient && \
-    python3 setup.py build && \
-    python3 setup.py install
-
-WORKDIR /app
-COPY poetry.lock pyproject.toml /app/
-
-RUN poetry config virtualenvs.create false && \
-    poetry install --no-interaction --no-ansi
-
+# Copy the source code
 COPY . /app
-EXPOSE 5000
+RUN mkdir -p /app/download
+WORKDIR /app
 
-ADD start.sh /
-RUN chmod +x /start.sh
+# Set the environment variables
+ENV FLASK_ENV=development
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
-ENTRYPOINT [ "poetry", "run" ]
-CMD ["/start.sh"]
+# Start the web application
+ENTRYPOINT ["python3", "app.py"]

@@ -1,0 +1,8 @@
+runtime: custom
+env: flex
+
+env_variables:
+  MG_HOST: "3.70.198.85"
+  MG_PASSWORD: "***"
+  MG_PORT: "7687"
+  MG_USERNAME: "***@***.com"
