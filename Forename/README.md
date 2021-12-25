@@ -15,13 +15,13 @@
    - [Public web pages](https://github.com/pospisilboh/Memgraph/tree/master/Forename#public-web-pages)
    - [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/tree/master/Forename#jupyter-notebook)
    - [Memgraph database](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database)
-   - [Memgraph database in Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-in-memgraph-cloud)
+   - [Memgraph database on Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-on-memgraph-cloud)
    - [Flask Application Server](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server)
       - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
       - [Flask Application Server on Amazon Lightsail](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-amazon-lightsail)
       - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
-   - [Tableau dashboards in Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-in-tableau-public)
+   - [Tableau dashboards on Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-on-tableau-public)
    
 3. <a href="#data-model">Data model</a>
    - [Data model diagram](https://github.com/pospisilboh/Memgraph/tree/master/Forename#data-model-diagram)
@@ -42,7 +42,7 @@ Using simple data, `forenames` and their `degree`, we built a <a href="#data-mod
 - [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management)
 - ...
 
-Main **business** features of our solution are:
+Main `business features` of our solution are:
 - <a href="#Forenames clusters analyzer">Forenames clusters analyzer</a>
 - <a href="#Forenames clusters graph analyzer">Forenames clusters graph analyzer</a>
 - <a href="#Forename recommendation">Forename recommendation</a>
@@ -56,7 +56,7 @@ Live demo is available in [here](https://public.tableau.com/app/profile/bobovo.e
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-Main **technical** abilities of our solution are:
+Main `technical abilities` of our solution are:
 - Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text
 - By [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb):
    - Load data to Memgraph database from *.csv files
@@ -73,8 +73,8 @@ Main **technical** abilities of our solution are:
       - [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry) or
       - [GCP App Engine](https://cloud.google.com/appengine) or
       - [Amazon Lightsail](https://aws.amazon.com/lightsail/?sc_icampaign=pac_lightsail_root&sc_ichannel=ha&sc_icontent=awssm-1111&sc_iplace=signin&trk=ha_awssm-1111)
-   - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login)
-   - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about)
+   - Memgraph database on [Memgraph Cloud](https://cloud.memgraph.com/login)
+   - Tableau dashboards on [Tableau Public](https://public.tableau.com/en-us/s/about)
 
 List of functions available in Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules):
 
@@ -85,25 +85,25 @@ List of functions available in Memgraph Custom Query Module [text_util.py](https
 <h2 id="architecture">Solution architecture</h2>
 
 The solution is a mix of the following technologies and tools:
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Python](https://www.python.org/)
-- [Jupyter Notebook](https://jupyter.org/)
-- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
-- [GCP App Engine](https://cloud.google.com/appengine)
 - [Amazon Lightsail](https://aws.amazon.com/lightsail/?sc_icampaign=pac_lightsail_root&sc_ichannel=ha&sc_icontent=awssm-1111&sc_iplace=signin&trk=ha_awssm-1111)
+- [ArchiMate](https://pubs.opengroup.org/architecture/archimate3-doc/)
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Cypher](https://en.wikipedia.org/wiki/Cypher_(query_language))
+- [D3.js](https://www.d3-graph-gallery.com/network)
+- [Docker](https://www.docker.com/)
+- [Docker Hub](https://hub.docker.com)
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+- [GCP App Engine](https://cloud.google.com/appengine)
+- [Jupyter Notebook](https://jupyter.org/)
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
-- [Cypher](https://en.wikipedia.org/wiki/Cypher_(query_language))
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
+- [Python](https://www.python.org/)
 - [SQL](https://cs.wikipedia.org/wiki/SQL)
-- [D3.js](https://www.d3-graph-gallery.com/network)
 - [Tableau](https://www.tableau.com/)
 - [Tableau Public](https://public.tableau.com/en-us/s/about)
-- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-- [Docker](https://www.docker.com/)
-- [Docker Hub](https://hub.docker.com)
-- [ArchiMate](https://pubs.opengroup.org/architecture/archimate3-doc/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 
 <h3 id="architecture">Architecture diagram</h3>
 <p align="center">
@@ -207,7 +207,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
       -   text_util.uuid_generate()
       -   text_util.substring(text, start, end, step)
 
-### Memgraph database in Memgraph Cloud
+### Memgraph database on Memgraph Cloud
 
 We exported the database from the Memgraph database by Memgraph Lab (exported dataset file `graph.cypherl`) and by Memgraph Lab imported the database to the Memgraph Cloud. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
 
@@ -418,7 +418,7 @@ This dashboard gives the possibility to:
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20repair%20rules.png?raw=true" alt="Forename repair rules" width="900"/>
 <p/>
 
-### Tableau dashboards in Tableau Public
+### Tableau dashboards on Tableau Public
 
 [Tableau Public](https://public.tableau.com/en-us/s/about) is a free platform to publicly share and explore data visualizations online. Anyone can create visualizations using either Tableau Desktop Professional Edition or the free Public Edition. 
 
