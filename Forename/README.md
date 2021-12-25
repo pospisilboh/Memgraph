@@ -20,7 +20,7 @@
       - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
       - [Flask Application Server on Amazon Lightsail](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-amazon-lightsail)
       - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
-      - [Flask Application Server on DigitalOcean Apps](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-digitalocean-apps)
+      - [Flask Application Server on DigitalOcean Apps Platform](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-digitalocean-apps-platform)
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
    - [Tableau dashboards on Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-on-tableau-public)
    
@@ -243,21 +243,22 @@ As an industry-standard platform and a service (PaaS), Cloud Foundry ensures the
 
 Description of how to deploy the Python Flask application server on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
+`cloud-provider` = `foremame-balanced-nyala-wk.eu-gb.mybluemix.net`
+
 Available services are:
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
-- <s>https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename</s>
-- <s>https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form</s>
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-detail?id=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-valid
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-cluster/degree/bridge?componentId=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-gender?id=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/set-forename-rule?rid=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-rule?id=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-rules
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
 
 > Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
-> - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
-> - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
+
 
 > The Flask application server deployed on IBM Cloud Foundry uses the Memgraph Cloud database.
 
@@ -266,21 +267,21 @@ Amazon Lightsail is a cloud platform that's cost-effective, fast, & reliable wit
 
 Description how to deploy our Python Flask application server on the Amazon Lightsail environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
+`cloud-provider` = `forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com`
+
 Available services are:
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-cluster-recommendation?componentId=
-- <s>https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-recommendation?forename</s>
-- <s>https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/forename-recommendation-form</s>
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-detail?id=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forenames-valid
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/degree/bridge?componentId=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-graph-gender?id=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/set-forename-rule?rid=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-rule?id=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forenames-rules
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
 
 > Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
-> - https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/forename-recommendation-form
-> - https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-recommendation?forename=
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
 
 > The Flask application server deployed on the Amazon Lightsail uses the Memgraph Cloud database.
 
@@ -289,29 +290,46 @@ App Engine is a fully managed, serverless platform for developing and hosting we
 
 Description how to deploy our Python Flask application server on the GCP App Engine (Flexible environment) environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
+`cloud-provider` = `forenames.ey.r.appspot.com`
+
 Available services are:
-- https://forenames.ey.r.appspot.com/get-cluster-recommendation?componentId=
-- <s>https://forenames.ey.r.appspot.com/get-forename-recommendation?forename</s>
-- <s>https://forenames.ey.r.appspot.com/forename-recommendation-form</s>
-- https://forenames.ey.r.appspot.com/get-forename-detail?id=
-- https://forenames.ey.r.appspot.com/get-forenames-valid
-- https://forenames.ey.r.appspot.com/degree/bridge?componentId=
-- https://forenames.ey.r.appspot.com/get-graph-gender?id=
-- https://forenames.ey.r.appspot.com/set-forename-rule?rid=
-- https://forenames.ey.r.appspot.com/get-forename-rule?id=
-- https://forenames.ey.r.appspot.com/get-forenames-rules
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
 
 > Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
-> - https://forenames.ey.r.appspot.com/forename-recommendation-form
-> - https://forenames.ey.r.appspot.com/get-forename-recommendation?forename=
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
 
 > The Flask application server deployed on the GCP App Engine uses the Memgraph Cloud database.
 
-### Flask Application Server on DigitalOcean Apps
+### Flask Application Server on DigitalOcean Apps Platform
+App Platform is a Platform-as-a-Service (PaaS) offering that allows developers to publish code directly to DigitalOcean servers without worrying about the underlying infrastructure.
 
-:ToDo
+Description how to deploy our Python Flask application server on the DigitalOcean Apps Platform environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
-https://bobovo-forenameserver-forename-m3r47.ondigitalocean.app/get-forenames-rules
+`cloud-provider` = `bobovo-forenameserver-forename-m3r47.ondigitalocean.app`
+
+Available services are:
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
+
+> Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
+
+> The Flask application server deployed on the DigitalOcean Apps Platform uses the Memgraph Cloud database.
 
 <h3 id="Tableau dashboards">Tableau dashboards</h3>
 
