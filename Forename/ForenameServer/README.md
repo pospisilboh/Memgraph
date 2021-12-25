@@ -4,15 +4,16 @@
 
 <font size = 3>
 
-1. <a href="#Flask application server">Flask application server</a>
-2. <a href="#Flask application server on the local">Flask application server on the local</a>
-3. <a href="#Flask application server on the IBM Cloud Foundry">Flask application server on the IBM Cloud Foundry</a>
-4. <a href="#Flask application server on the GCP App Engine">Flask application server on the GCP App Engine</a>
+1. <a href="#Flask Application Server">Flask Application Server</a>
+2. <a href="#Flask Application Server on the local">Flask Application Server on the local</a>
+3. <a href="#Flask Application Server on the IBM Cloud Foundry">Flask Application Server on the IBM Cloud Foundry</a>
+4. <a href="#Flask Application Server on Amazon Lightsail">Flask Application Server on Amazon Lightsail</a>
+5. <a href="#Flask Application Server on the GCP App Engine">Flask Application Server on the GCP App Engine</a>
 
 </font>
 </div>
 
-<h1 id="Flask application server">Flask application server</h1>
+<h1 id="Flask Application Server">Flask Application Server</h1>
 
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing services that are consumed by Tableau or Tableau Public dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
@@ -126,7 +127,7 @@ Implemented services are:
 > By the web service http://127.0.0.1:5000/set-forename-rule?rid= is possible to create rule in the database.
 
 
-<h1 id="Flask application server on the local">Flask application server on the local</h1>
+<h1 id="Flask Application Server on the local">Flask Application Server on the local</h1>
 
 ## Flask application (app.py)
 ```py
@@ -248,7 +249,7 @@ docker-compose build
 docker-compose up
 ```
 
-<h1 id="Flask application server on the IBM Cloud Foundry">Flask application server on the IBM Cloud Foundry</h1>
+<h1 id="Flask Application Server on the IBM Cloud Foundry">Flask Application Server on the IBM Cloud Foundry</h1>
 
 Description how to deploy our Python Flask application server on the IBM cloud foundry environment.
 
@@ -300,7 +301,22 @@ User defined variables are:
    <img src="https://github.com/pospisilboh/Memgraph/blob/3951d2a40f953d6f8d44fb228b9483fc3afc5be3/Forename/Images/Cloud%20foundry%20-%20variables.png?raw=true" alt="User defined variables"/>
 <p/>
 
-<h1 id="Flask application server on the GCP App Engine">Flask application server on the GCP App Engine</h1>
+<h1 id="Flask Application Server on Amazon Lightsail">Flask Application Server on Amazon Lightsail</h1>
+
+Amazon Lightsail is a cloud platform that's cost-effective, fast, & reliable with an easy-to-use interface. It’s ideal for simpler workloads, quick deployments, and getting started on AWS.
+
+Use `docker image push` to share your images to the [Docker Hub](https://hub.docker.com) registry:
+```
+docker push bobovo/forenameserver_forename:latest
+```
+
+Description how to deploy our Python Flask application server on the on Amazon Lightsail environment.
+
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/20c7f53358ab93b01a1ad2e6274ba73d16e4a975/Forename/Images/Amazon%20Lightsail.png?raw=true" alt="Amazon Lightsail"/>
+<p/>
+
+<h1 id="Flask Application Server on the GCP App Engine">Flask Application Server on the GCP App Engine</h1>
 
 App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand.
 
