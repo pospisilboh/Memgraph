@@ -20,6 +20,7 @@
       - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
       - [Flask Application Server on Amazon Lightsail](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-amazon-lightsail)
       - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
+      - [Flask Application Server on DigitalOcean Apps]()
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
    - [Tableau dashboards on Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-on-tableau-public)
    
@@ -90,6 +91,7 @@ The solution is a mix of the following technologies and tools:
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [Cypher](https://en.wikipedia.org/wiki/Cypher_(query_language))
 - [D3.js](https://www.d3-graph-gallery.com/network)
+- [DigitalOcean App Platform](https://docs.digitalocean.com/products/app-platform/)
 - [Docker](https://www.docker.com/)
 - [Docker Hub](https://hub.docker.com)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
@@ -304,6 +306,12 @@ Available services are:
 > - https://forenames.ey.r.appspot.com/get-forename-recommendation?forename=
 
 > The Flask application server deployed on the GCP App Engine uses the Memgraph Cloud database.
+
+### Flask Application Server on DigitalOcean Apps
+
+:ToDo
+
+https://bobovo-forenameserver-forename-m3r47.ondigitalocean.app/get-forenames-rules
 
 <h3 id="Tableau dashboards">Tableau dashboards</h3>
 
