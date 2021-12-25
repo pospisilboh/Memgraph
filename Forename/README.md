@@ -207,6 +207,8 @@ We exported the database from the Memgraph database by Memgraph Lab (exported da
 ### Flask Application Server
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing [application server](https://github.com/pospisilboh/Memgraph/tree/master/Forename/ForenameServer) that provide services (web pages) that are consumed by Tableau dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
+Description how to run our Python Flask application server on the local environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+
 Implemented services are:
 - `http://127.0.0.1:5000/get-cluster-recommendation?componentId=`
 - `http://127.0.0.1:5000/get-forename-recommendation?forename=`
