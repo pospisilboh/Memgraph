@@ -17,8 +17,9 @@
    - [Memgraph database](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database)
    - [Memgraph database in Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-in-memgraph-cloud)
    - [Flask Application Server](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server)
-   - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
-   - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
+      - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
+      - [Flask Application Server on Amazon Lightsail](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-amazon-lightsail)
+      - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
    - [Tableau dashboards in Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-in-tableau-public)
    
@@ -87,6 +88,7 @@ The solution is a mix of the following technologies and tools:
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
 - [GCP App Engine](https://cloud.google.com/appengine)
+- [Amazon Lightsail](https://aws.amazon.com/lightsail/?sc_icampaign=pac_lightsail_root&sc_ichannel=ha&sc_icontent=awssm-1111&sc_iplace=signin&trk=ha_awssm-1111)
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
@@ -252,6 +254,29 @@ Available services are:
 > - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
 
 > The Flask application server deployed on IBM Cloud Foundry uses the Memgraph Cloud database.
+
+### Flask Application Server on Amazon Lightsail
+Amazon Lightsail is a cloud platform that's cost-effective, fast, & reliable with an easy-to-use interface. It’s ideal for simpler workloads, quick deployments, and getting started on AWS.
+
+Description how to deploy our Python Flask application server on the Amazon Lightsail environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+
+Available services are:
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-cluster-recommendation?componentId=
+- <s>https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-recommendation?forename</s>
+- <s>https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/forename-recommendation-form</s>
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-detail?id=
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forenames-valid
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/degree/bridge?componentId=
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-graph-gender?id=
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/set-forename-rule?rid=
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-rule?id=
+- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forenames-rules
+
+> Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
+> - https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/forename-recommendation-form
+> - https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-recommendation?forename=
+
+> The Flask application server deployed on the Amazon Lightsail uses the Memgraph Cloud database.
 
 ### Flask Application Server on GCP App Engine
 App Engine is a fully managed, serverless platform for developing and hosting web applications at scale. You can choose from several popular languages, libraries, and frameworks to develop your apps, and then let App Engine take care of provisioning servers and scaling your app instances based on demand.
