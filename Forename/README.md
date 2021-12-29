@@ -100,6 +100,7 @@ The solution is a mix of the following technologies and tools:
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
+- [OpenAPI 3.0](https://swagger.io/docs/specification/about/)
 - [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
 - [Python](https://www.python.org/)
 - [SQL](https://cs.wikipedia.org/wiki/SQL)
