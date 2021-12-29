@@ -366,8 +366,12 @@ gcloud app browse
 <h1 id="Flask Application Server on the DigitalOcean Apps">Flask Application Server on the DigitalOcean Apps</h1>
 App Platform is a Platform-as-a-Service (PaaS) offering that allows developers to publish code directly to DigitalOcean servers without worrying about the underlying infrastructure.
 
-## YAML File
-As an alternative to configuring your app in the control panel, you can define an app specification using YAML.
+## doctl
+
+[doctl](https://docs.digitalocean.com/reference/doctl/) is the official DigitalOcean command line interface (CLI). `doctl` allows you to interact with the DigitalOcean API via the command line. It supports most functionality found in the control panel. You can create, configure, and destroy DigitalOcean resources like Droplets, Kubernetes clusters, firewalls, load balancers, database clusters, domains, and more.
+
+## YAML File (bobovo-forenameserver-forename.yaml)
+As an alternative to configuring your app in the control panel, you can define an app specification using YAML and use `doctl`.
 
 ```yml	
 alerts:
@@ -401,4 +405,31 @@ services:
   routes:
   - path: /
   source_dir: /
+  cors:
+    allow_headers:
+    - '*'
+    allow_methods:
+    - GET
+    - OPTIONS
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    allow_origins:
+    - prefix: '*'
+```
+
+[Create](https://docs.digitalocean.com/reference/doctl/reference/apps/create/) an app with the given app spec:
+```
+octl apps create --spec {path}\bobovo-forenameserver-forename.yaml
+```
+
+[List](https://docs.digitalocean.com/reference/doctl/reference/apps/list/) all apps:
+```
+doctl apps list
+```
+
+[Update](https://docs.digitalocean.com/reference/doctl/reference/apps/update/) the specified app with the given app spec:
+```
+doctl apps update bf8e3538-e5f5-450b-b98b-40ab0d34b32e --spec {path}\bobovo-forenameserver-forename.yaml
 ```
