@@ -43,7 +43,7 @@ Using simple data, `forenames` and their `degree`, we built a <a href="#data-mod
 - [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management)
 - ...
 
-Main `business features` of our solution are:
+The main `business features` of our solution are:
 - <a href="#Forenames clusters analyzer">Forenames clusters analyzer</a>
 - <a href="#Forenames clusters graph analyzer">Forenames clusters graph analyzer</a>
 - <a href="#Forename recommendation">Forename recommendation</a>
@@ -57,7 +57,7 @@ Live demo is available in [here](https://public.tableau.com/app/profile/bobovo.e
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-Main `technical abilities` of our solution are:
+The main `technical abilities` of our solution are:
 - Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text
 - By [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb):
    - Load data to Memgraph database from *.csv files
