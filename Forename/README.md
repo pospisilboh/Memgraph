@@ -15,13 +15,14 @@
    - [Public web pages](https://github.com/pospisilboh/Memgraph/tree/master/Forename#public-web-pages)
    - [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/tree/master/Forename#jupyter-notebook)
    - [Memgraph database](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database)
-   - [Memgraph database in Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-in-memgraph-cloud)
+   - [Memgraph database on Memgraph Cloud](https://github.com/pospisilboh/Memgraph/tree/master/Forename#memgraph-database-on-memgraph-cloud)
    - [Flask Application Server](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server)
       - [Flask Application Server on IBM Cloud Foundry](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-ibm-cloud-foundry)
       - [Flask Application Server on Amazon Lightsail](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-amazon-lightsail)
       - [Flask Application Server on GCP App Engine](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-gcp-app-engine)
+      - [Flask Application Server on DigitalOcean Apps Platform](https://github.com/pospisilboh/Memgraph/tree/master/Forename#flask-application-server-on-digitalocean-apps-platform)
    - [Tableau dashboards](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards)
-   - [Tableau dashboards in Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-in-tableau-public)
+   - [Tableau dashboards on Tableau Public](https://github.com/pospisilboh/Memgraph/tree/master/Forename#tableau-dashboards-on-tableau-public)
    
 3. <a href="#data-model">Data model</a>
    - [Data model diagram](https://github.com/pospisilboh/Memgraph/tree/master/Forename#data-model-diagram)
@@ -42,7 +43,7 @@ Using simple data, `forenames` and their `degree`, we built a <a href="#data-mod
 - [Master Data Management](https://en.wikipedia.org/wiki/Master_data_management)
 - ...
 
-Main **business** features of our solution are:
+The main `business features` of our solution are:
 - <a href="#Forenames clusters analyzer">Forenames clusters analyzer</a>
 - <a href="#Forenames clusters graph analyzer">Forenames clusters graph analyzer</a>
 - <a href="#Forename recommendation">Forename recommendation</a>
@@ -56,7 +57,7 @@ Live demo is available in [here](https://public.tableau.com/app/profile/bobovo.e
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
 <p/>
 
-Main **technical** abilities of our solution are:
+The main `technical abilities` of our solution are:
 - Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) that contain utility functions that are needed to work with text
 - By [Jupyter Notebook](https://github.com/pospisilboh/Memgraph/blob/a3cdd22d5435bcbc51d80a6b5a14965024f03d2f/Forename/Jupyter/Memgraph_Forename.ipynb):
    - Load data to Memgraph database from *.csv files
@@ -69,9 +70,12 @@ Main **technical** abilities of our solution are:
 - Embedded the web pages in <a href="#Tableau">dashboards</a> of Tableau and Tableau Public
 - Graph visualization by [D3.js](https://www.d3-graph-gallery.com/network)
 - Public part of the solution consist of:
-   - Application server hostet in [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
-   - Memgraph database in [Memgraph Cloud](https://cloud.memgraph.com/login)
-   - Tableau dashboards in [Tableau Public](https://public.tableau.com/en-us/s/about)
+   - Application server hostet on:
+      - [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry) or
+      - [GCP App Engine](https://cloud.google.com/appengine) or
+      - [Amazon Lightsail](https://aws.amazon.com/lightsail/?sc_icampaign=pac_lightsail_root&sc_ichannel=ha&sc_icontent=awssm-1111&sc_iplace=signin&trk=ha_awssm-1111)
+   - Memgraph database on [Memgraph Cloud](https://cloud.memgraph.com/login)
+   - Tableau dashboards on [Tableau Public](https://public.tableau.com/en-us/s/about)
 
 List of functions available in Memgraph Custom Query Module [text_util.py](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules):
 
@@ -82,28 +86,31 @@ List of functions available in Memgraph Custom Query Module [text_util.py](https
 <h2 id="architecture">Solution architecture</h2>
 
 The solution is a mix of the following technologies and tools:
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Python](https://www.python.org/)
-- [Jupyter Notebook](https://jupyter.org/)
-- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
-- [GCP App Engine](https://cloud.google.com/appengine)
 - [Amazon Lightsail](https://aws.amazon.com/lightsail/?sc_icampaign=pac_lightsail_root&sc_ichannel=ha&sc_icontent=awssm-1111&sc_iplace=signin&trk=ha_awssm-1111)
+- [ArchiMate](https://pubs.opengroup.org/architecture/archimate3-doc/)
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Cypher](https://en.wikipedia.org/wiki/Cypher_(query_language))
+- [D3.js](https://www.d3-graph-gallery.com/network)
+- [DigitalOcean App Platform](https://docs.digitalocean.com/products/app-platform/)
+- [Docker](https://www.docker.com/)
+- [Docker Hub](https://hub.docker.com)
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+- [GCP App Engine](https://cloud.google.com/appengine)
+- [Jupyter Notebook](https://jupyter.org/)
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
-- [Cypher](https://en.wikipedia.org/wiki/Cypher_(query_language))
+- [OpenAPI 3.0](https://swagger.io/docs/specification/about/)
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
+- [Python](https://www.python.org/)
 - [SQL](https://cs.wikipedia.org/wiki/SQL)
-- [D3.js](https://www.d3-graph-gallery.com/network)
 - [Tableau](https://www.tableau.com/)
 - [Tableau Public](https://public.tableau.com/en-us/s/about)
-- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-- [Docker](https://www.docker.com/)
-- [ArchiMate](https://pubs.opengroup.org/architecture/archimate3-doc/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 
 <h3 id="architecture">Architecture diagram</h3>
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/f72d24eced755469b802c4ea8f75666f9c75b295/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/f0cee46084bdc663a981c94d0a05192f7e5a70ec/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### External system
@@ -203,7 +210,7 @@ We used the power and simplicity of the Cypher query language and Memgraph’s e
       -   text_util.uuid_generate()
       -   text_util.substring(text, start, end, step)
 
-### Memgraph database in Memgraph Cloud
+### Memgraph database on Memgraph Cloud
 
 We exported the database from the Memgraph database by Memgraph Lab (exported dataset file `graph.cypherl`) and by Memgraph Lab imported the database to the Memgraph Cloud. The Memgraph Cloud database is used by our Flask application server deployed to IBM Cloud Foundry.
 
@@ -237,21 +244,22 @@ As an industry-standard platform and a service (PaaS), Cloud Foundry ensures the
 
 Description of how to deploy the Python Flask application server on the IBM cloud foundry environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
+`cloud-provider` = `foremame-balanced-nyala-wk.eu-gb.mybluemix.net`
+
 Available services are:
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-cluster-recommendation?componentId=
-- <s>https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename</s>
-- <s>https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form</s>
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-detail?id=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-valid
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-cluster/degree/bridge?componentId=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-graph-gender?id=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/set-forename-rule?rid=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-rule?id=
-- https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forenames-rules
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
 
 > Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
-> - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/forename-recommendation-form
-> - https://foremame-balanced-nyala-wk.eu-gb.mybluemix.net/get-forename-recommendation?forename=
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
+
 
 > The Flask application server deployed on IBM Cloud Foundry uses the Memgraph Cloud database.
 
@@ -260,21 +268,21 @@ Amazon Lightsail is a cloud platform that's cost-effective, fast, & reliable wit
 
 Description how to deploy our Python Flask application server on the Amazon Lightsail environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
+`cloud-provider` = `forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com`
+
 Available services are:
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-cluster-recommendation?componentId=
-- <s>https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-recommendation?forename</s>
-- <s>https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/forename-recommendation-form</s>
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-detail?id=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forenames-valid
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/degree/bridge?componentId=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-graph-gender?id=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/set-forename-rule?rid=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-rule?id=
-- https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forenames-rules
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
 
 > Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
-> - https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/forename-recommendation-form
-> - https://forenames.jfm9cea2smhfs.eu-central-1.cs.amazonlightsail.com/get-forename-recommendation?forename=
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
 
 > The Flask application server deployed on the Amazon Lightsail uses the Memgraph Cloud database.
 
@@ -283,23 +291,46 @@ App Engine is a fully managed, serverless platform for developing and hosting we
 
 Description how to deploy our Python Flask application server on the GCP App Engine (Flexible environment) environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
 
+`cloud-provider` = `forenames.ey.r.appspot.com`
+
 Available services are:
-- https://forenames.ey.r.appspot.com/get-cluster-recommendation?componentId=
-- <s>https://forenames.ey.r.appspot.com/get-forename-recommendation?forename</s>
-- <s>https://forenames.ey.r.appspot.com/forename-recommendation-form</s>
-- https://forenames.ey.r.appspot.com/get-forename-detail?id=
-- https://forenames.ey.r.appspot.com/get-forenames-valid
-- https://forenames.ey.r.appspot.com/degree/bridge?componentId=
-- https://forenames.ey.r.appspot.com/get-graph-gender?id=
-- https://forenames.ey.r.appspot.com/set-forename-rule?rid=
-- https://forenames.ey.r.appspot.com/get-forename-rule?id=
-- https://forenames.ey.r.appspot.com/get-forenames-rules
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
 
 > Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
-> - https://forenames.ey.r.appspot.com/forename-recommendation-form
-> - https://forenames.ey.r.appspot.com/get-forename-recommendation?forename=
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
 
 > The Flask application server deployed on the GCP App Engine uses the Memgraph Cloud database.
+
+### Flask Application Server on DigitalOcean Apps Platform
+App Platform is a Platform-as-a-Service (PaaS) offering that allows developers to publish code directly to DigitalOcean servers without worrying about the underlying infrastructure.
+
+Description how to deploy our Python Flask application server on the DigitalOcean Apps Platform environment is [here](https://github.com/pospisilboh/Memgraph/blob/master/Forename/ForenameServer/README.md).
+
+`cloud-provider` = `bobovo-forenameserver-forename-m3r47.ondigitalocean.app`
+
+Available services are:
+- https://{cloud-provider}/get-cluster-recommendation?componentId=
+- https://{cloud-provider}/get-forename-detail?id=
+- https://{cloud-provider}/get-forenames-valid
+- https://{cloud-provider}/degree/bridge?componentId=
+- https://{cloud-provider}/get-graph-gender?id=
+- https://{cloud-provider}/set-forename-rule?rid=
+- https://{cloud-provider}/get-forename-rule?id=
+- https://{cloud-provider}/get-forenames-rules
+
+> Following services are not supported because there is not possible to deploy our custom query module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules) to Memgraph Cloud:
+> - https://{cloud-provider}/forename-recommendation-form
+> - https://{cloud-provider}/get-forename-recommendation?forename=
+
+> The Flask application server deployed on the DigitalOcean Apps Platform uses the Memgraph Cloud database.
 
 <h3 id="Tableau dashboards">Tableau dashboards</h3>
 
@@ -414,7 +445,7 @@ This dashboard gives the possibility to:
    <img src="https://github.com/pospisilboh/Memgraph/blob/a0642f172e0fef04566bbce79cfdb96e21c5ee61/Forename/Images/Forename%20repair%20rules.png?raw=true" alt="Forename repair rules" width="900"/>
 <p/>
 
-### Tableau dashboards in Tableau Public
+### Tableau dashboards on Tableau Public
 
 [Tableau Public](https://public.tableau.com/en-us/s/about) is a free platform to publicly share and explore data visualizations online. Anyone can create visualizations using either Tableau Desktop Professional Edition or the free Public Edition. 
 
