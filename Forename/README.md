@@ -51,7 +51,7 @@ The main `business features` of our solution are:
 - <a href="#Forename repair rules recommendation">Forename repair rules recommendation</a>
 - <a href="#Forename repair rules getter">Forename repair rules getter</a>
 
-Live demo is available in [here](https://public.tableau.com/app/profile/bobovo.eu/viz/Forenames_20211216/Forenamedashboard).
+Live `dashboards` are available [here](https://public.tableau.com/app/profile/bobovo.eu/viz/Forenames_20211216/Forenamedashboard).
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
