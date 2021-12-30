@@ -36,6 +36,8 @@
 
 <h2 id="description">Description of the solution</h2>
 
+A short introduction video is available [here](https://www.loom.com/embed/13f2ba9e9517421988535a18c7ad6b36).
+
 Using simple data, `forenames` and their `degree`, we built a <a href="#data-model">graph</a> and later a solution, which soon will help us improve data quality and solve cases such as:
 - [Customer 360](https://profisee.com/customer-360-what-why-and-how/)
 - [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view)
