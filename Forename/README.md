@@ -96,12 +96,12 @@ The solution is a mix of the following technologies and tools:
 - [Docker Hub](https://hub.docker.com)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [GCP App Engine](https://cloud.google.com/appengine)
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
 - [Jupyter Notebook](https://jupyter.org/)
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
 - [OpenAPI 3.0](https://swagger.io/docs/specification/about/)
-- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
 - [Python](https://www.python.org/)
 - [SQL](https://cs.wikipedia.org/wiki/SQL)
 - [Tableau](https://www.tableau.com/)
@@ -110,7 +110,7 @@ The solution is a mix of the following technologies and tools:
 
 <h3 id="architecture">Architecture diagram</h3>
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/f0cee46084bdc663a981c94d0a05192f7e5a70ec/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/32ed4e90e847475d0dd9958bc7796c901a994fd5/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### External system
