@@ -1,0 +1,236 @@
+
+openapi: 3.0.0
+info:
+  description: Forename analyzer API.
+  version: "1.0.0"
+  title: Forename analyzer API
+  contact:
+    email: pospisil.boh@gmail.com
+    name: Bohumil Pospíšil
+  license:
+    name: MIT License
+    url: 'https://github.com/pospisilboh/Memgraph/blob/master/LICENSE'
+
+servers:
+  - url: https://bobovo-forenameserver-forename-1-44vyc.ondigitalocean.app
+    variables:
+      environment:
+        default: api.dev     # Development server
+        enum:
+          - api         # Production server
+          - api.dev     # Development server
+          - api.staging # Staging server
+          
+tags:
+  - name: forenames
+    description: Operations about forenames
+  - name: forenames clusters
+    description: Operations about forenames clusters
+  - name: forenames rules
+    description: Operations about forenames rules
+
+paths:
+  /get-cluster-recommendation:
+    get:
+      description: Returns a recommended forename for defined forenames cluster
+      tags:
+        - forenames clusters
+      parameters:
+        - name: componentId
+          in: query
+          description: Identificator of forenames cluster
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: a recommended forename for defined forenames cluster
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /get-graph-cluster/{node}/{edge}:
+    get:
+      description: Returns a graph for defined forenames cluster
+      tags:
+        - forenames clusters
+      parameters:
+        - name: componentId
+          in: query
+          description: Identificator of forenames cluster
+          schema:
+            type: integer
+          required: true
+        - name: node
+          in: path
+          description: name of node property
+          schema:
+            type: string
+            enum: [betweenness, degre, pageRank, valid]
+          required: true
+        - name: edge
+          in: path
+          description: name of edge property
+          schema:
+            type: string
+            enum: [bridge, score]
+          required: true
+
+      responses:
+        '200':
+          description: a recommended forename for defined forenames cluster
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /get-graph-gender:
+    get:
+      description: Returns a gender graph for forename
+      tags:
+        - forenames
+      parameters:
+        - name: id
+          in: query
+          description: Identificator of forename
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: a forename gender graph
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /get-forename-detail:
+    get:
+      description: Returns a forename detail
+      tags:
+        - forenames
+      parameters:
+        - name: id
+          in: query
+          description: Identificator of forename
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: a forename detail to be returned
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /get-forenames-valid:
+    get:
+      description: Returns a valid forenames
+      tags:
+        - forenames
+
+      responses:
+        '200':
+          description: a list of valid forenames
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /forename-recommendation-form:
+    get:
+      description: Returns a forename recommendation
+      tags:
+        - forenames
+      parameters:
+        - name: forename
+          in: query
+          description: A forename
+          schema:
+            type: string
+        - name: method
+          in: query
+          description: A method
+          schema:
+            type: string
+        - name: similarityMin
+          in: query
+          description: A similarity treshold
+          schema:
+            type: number
+        - name: degree
+          in: query
+          description: A degree
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: a forename recommendation
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /get-forenames-rules:
+    get:
+      description: Returns a list of forenames rules
+      operationId: get-forenames-rules
+      tags:
+        - forenames rules
+
+      responses:
+        '200':
+          description: a forename rule to be returned
+          content:
+            text/html:
+              schema:
+                type: string
+  
+  /get-forename-rule:
+    get:
+      description: Returns a forename rule
+      tags:
+        - forenames rules
+      parameters:
+        - name: id
+          in: query
+          description: Identificator of forename
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: a forename rule to be returned
+          content:
+            text/html:
+              schema:
+                type: string
+                
+  /set-forename-rule:
+    put:
+      description: Set and return a forename rule
+      tags:
+        - forenames rules
+      parameters:
+        - name: rid
+          in: query
+          description: Identificator of similarity relatinship between forenames
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: a forename rule to be returned
+          content:
+            text/html:
+              schema:
+                type: string
+
+              
+
+
+
+
