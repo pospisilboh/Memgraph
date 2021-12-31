@@ -36,6 +36,8 @@
 
 <h2 id="description">Description of the solution</h2>
 
+A short introduction video is available [here](https://www.loom.com/embed/13f2ba9e9517421988535a18c7ad6b36).
+
 Using simple data, `forenames` and their `degree`, we built a <a href="#data-model">graph</a> and later a solution, which soon will help us improve data quality and solve cases such as:
 - [Customer 360](https://profisee.com/customer-360-what-why-and-how/)
 - [Single Customer View](https://en.wikipedia.org/wiki/Single_customer_view)
@@ -51,7 +53,7 @@ The main `business features` of our solution are:
 - <a href="#Forename repair rules recommendation">Forename repair rules recommendation</a>
 - <a href="#Forename repair rules getter">Forename repair rules getter</a>
 
-Live demo is available in [here](https://public.tableau.com/app/profile/bobovo.eu/viz/Forenames_20211216/Forenamedashboard).
+Live `dashboards` are available [here](https://public.tableau.com/app/profile/bobovo.eu/viz/Forenames_20211216/Forenamedashboard).
 
 <p align="center">
    <img src="https://github.com/pospisilboh/Memgraph/blob/88e54a68807e45fd13daec48638f63ed0f1f2ea4/Forename/Images/Dashboards.png?raw=true" alt="Dashboards" width="900"/>
@@ -96,12 +98,12 @@ The solution is a mix of the following technologies and tools:
 - [Docker Hub](https://hub.docker.com)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [GCP App Engine](https://cloud.google.com/appengine)
+- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
 - [Jupyter Notebook](https://jupyter.org/)
 - [Memgraph](https://memgraph.com/)
 - [Memgraph Lab](https://memgraph.com/product/lab)
 - [Memgraph Cloud](https://cloud.memgraph.com/login)
 - [OpenAPI 3.0](https://swagger.io/docs/specification/about/)
-- [IBM Cloud Foundry](https://www.ibm.com/cloud/cloud-foundry)
 - [Python](https://www.python.org/)
 - [SQL](https://cs.wikipedia.org/wiki/SQL)
 - [Tableau](https://www.tableau.com/)
@@ -110,7 +112,7 @@ The solution is a mix of the following technologies and tools:
 
 <h3 id="architecture">Architecture diagram</h3>
 <p align="center">
-   <img src="https://github.com/pospisilboh/Memgraph/blob/f0cee46084bdc663a981c94d0a05192f7e5a70ec/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
+   <img src="https://github.com/pospisilboh/Memgraph/blob/32ed4e90e847475d0dd9958bc7796c901a994fd5/Forename/Images/Architecture.png?raw=true" alt="Architecture" width="900"/>
 <p/>
 
 ### External system
