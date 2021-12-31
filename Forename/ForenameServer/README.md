@@ -17,7 +17,17 @@
 
 [**Flask**](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python and we used it for implementing services that are consumed by Tableau or Tableau Public dashboards. To be able visualize a graph a JavaScript library [**D3.js**](https://www.d3-graph-gallery.com/network) was used.
 
-Implemented services are:
+## OpenAPI definition 
+
+An OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and clients in various programming languages, testing tools, and many other use cases. 
+
+The OpenAPI definition of our application server services is available [here](https://github.com/pospisilboh/Memgraph/blob/bfb4d6a65fdef8071eed386b575d9ae9a5dfb030/Forename/ForenameServer/openApi.yaml).
+
+<p align="center">
+   <img src="https://github.com/pospisilboh/Memgraph/blob/ecb14f1466e1a5cc865ecf6532d89319dd413cc6/Forename/Images/Open%20Api.png?raw=true" alt="OpenAPI definition "/>
+<p/>
+
+## Example results of implemented services
 - http://127.0.0.1:5000/get-cluster-recommendation?componentId=
 
 ```json
@@ -239,7 +249,7 @@ services:
       MG_USERNAME: ***@***.com
 ```
 
-Description how to deploy our Python Flask application server on the local.
+Description how to run our Python Flask application server on the local.
 
 ```
 docker-compose build
