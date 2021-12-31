@@ -117,6 +117,8 @@ The solution is a mix of the following technologies and tools:
 
 ### External system
 From an external system, we extracted `forenames` and their `degree`. Data for import are available as a *.csv file.
+
+Expected format of file:
 ```csv
 degree,forename
 759,Drahomíra
@@ -124,6 +126,8 @@ degree,forename
 8314,Hana
 ...
 ```
+
+Example of the file with data from external system is available in file [card_forenames_examples.csv](https://github.com/pospisilboh/Memgraph/blob/faf802d46566d7be179407cc9c20456b32b59bdb/Forename/Import/card_forenames_examples.csv).
 
 ### Public web pages
 Following public web pages were used for web scraping additional information (`gender`, `name day`, `nickname`) with the use of a Web Scraping framework by Python called [**Beautiful Soup**](https://www.crummy.com/software/BeautifulSoup/bs4/doc/):
