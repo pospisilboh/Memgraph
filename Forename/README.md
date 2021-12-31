@@ -453,6 +453,8 @@ This dashboard gives the possibility to:
 
 Publish the [dashboards](https://public.tableau.com/app/profile/bobovo.eu/viz/Forenames_20211216/Forenamedashboard) from local Tableau Desktop Professional Edition to a Tableau Public is a way how to share our dashboards with others publicly.
 
+> In Tableau Public there is a possibility to download dashboards definition (Setting--> Download --> Tableau Workbook).
+
 > Some functionalities of dashboards are limited, in Memgraph Cloud database there aren't available functionalities of our custom Query Module [**text_util.py**](https://github.com/pospisilboh/Memgraph/tree/master/Forename/Modules).
 
 <h2 id="data-model">Data model</h2>
